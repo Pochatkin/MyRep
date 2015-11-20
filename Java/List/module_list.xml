@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_list" default="compile.module.list">
+  <dirname property="module.list.basedir" file="${ant.file.module_list}"/>
+  
+  <property name="module.jdk.home.list" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.list" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.list" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.list" value="-encoding windows-1251 -source 8 ${compiler.args}"/>
+  
+  <property name="list.output.dir" value="${module.list.basedir}/out/production/List"/>
+  <property name="list.testoutput.dir" value="${module.list.basedir}/out/test/List"/>
+  
+  <path id="list.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="list.module.production.classpath">
+    <path refid="${module.jdk.classpath.list}"/>
+  </path>
+  
+  <path id="list.runtime.production.module.classpath">
+    <pathelement location="${list.output.dir}"/>
+  </path>
+  
+  <path id="list.module.classpath">
+    <path refid="${module.jdk.classpath.list}"/>
+    <pathelement location="${list.output.dir}"/>
+  </path>
+  
+  <path id="list.runtime.module.classpath">
+    <pathelement location="${list.testoutput.dir}"/>
+    <pathelement location="${list.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.list">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.list">
+    <patternset refid="excluded.from.module.list"/>
+  </patternset>
+  
+  <path id="list.module.sourcepath">
+    <dirset dir="${module.list.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.list" depends="compile.module.list.production,compile.module.list.tests" description="Compile module List"/>
+  
+  <target name="compile.module.list.production" depends="register.custom.compilers" description="Compile module List; production classes">
+    <mkdir dir="${list.output.dir}"/>
+    <javac2 destdir="${list.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.list}/javac">
+      <compilerarg line="${compiler.args.list}"/>
+      <bootclasspath refid="list.module.bootclasspath"/>
+      <classpath refid="list.module.production.classpath"/>
+      <src refid="list.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.list"/>
+    </javac2>
+    
+    <copy todir="${list.output.dir}">
+      <fileset dir="${module.list.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.list.tests" depends="register.custom.compilers,compile.module.list.production" description="compile module List; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.list" description="cleanup module">
+    <delete dir="${list.output.dir}"/>
+    <delete dir="${list.testoutput.dir}"/>
+  </target>
+</project>

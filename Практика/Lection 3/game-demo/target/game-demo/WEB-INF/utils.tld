@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+
+    <tlib-version>1.0</tlib-version>
+    <short-name>util</short-name>
+    <uri>http://exigen.ru/students/tags</uri>
+
+    <tag>
+        <name>helloTag</name>
+        <tag-class>com.exigenservices.lectures.tags.HelloTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+s
+    <tag>
+        <name>check</name>
+        <tag-class>com.exigenservices.lectures.tags.CheckTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>value</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>
+</taglib>

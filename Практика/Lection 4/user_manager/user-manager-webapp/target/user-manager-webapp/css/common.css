@@ -1,0 +1,21 @@
+body{
+    font-size: 12pt;
+    color: black;
+}
+
+.error{
+    color: red;
+    font-weight: bold;
+}
+
+.add_user_form{
+    border: 1px solid #cfcfcf;
+    width: 30%;
+    margin-top: 10px;
+    margin-top: 10px;
+}
+
+.right_cell{
+    text-align: right;
+    padding-right: 10px;
+}

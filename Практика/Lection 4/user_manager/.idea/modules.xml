@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/user-manager.iml" filepath="$PROJECT_DIR$/user-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-manager-domain/user-manager-domain.iml" filepath="$PROJECT_DIR$/user-manager-domain/user-manager-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-manager-ear/user-manager-ear.iml" filepath="$PROJECT_DIR$/user-manager-ear/user-manager-ear.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-manager-ejb/user-manager-ejb.iml" filepath="$PROJECT_DIR$/user-manager-ejb/user-manager-ejb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-manager-ejb-api/user-manager-ejb-api.iml" filepath="$PROJECT_DIR$/user-manager-ejb-api/user-manager-ejb-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-manager-model/user-manager-model.iml" filepath="$PROJECT_DIR$/user-manager-model/user-manager-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-manager-webapp/user-manager-webapp.iml" filepath="$PROJECT_DIR$/user-manager-webapp/user-manager-webapp.iml" />
+    </modules>
+  </component>
+</project>
