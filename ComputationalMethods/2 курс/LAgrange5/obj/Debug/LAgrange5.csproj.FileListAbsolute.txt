@@ -1,8 +1,0 @@
-c:\users\михаил\documents\visual studio 2013\Projects\LAgrange5\bin\Debug\LAgrange5.exe.config
-c:\users\михаил\documents\visual studio 2013\Projects\LAgrange5\bin\Debug\LAgrange5.exe
-c:\users\михаил\documents\visual studio 2013\Projects\LAgrange5\bin\Debug\LAgrange5.pdb
-c:\users\михаил\documents\visual studio 2013\Projects\LAgrange5\obj\Debug\LAgrange5.exe
-c:\users\михаил\documents\visual studio 2013\Projects\LAgrange5\obj\Debug\LAgrange5.pdb
-C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\LAgrange5\bin\Debug\LAgrange5.exe.config
-C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\LAgrange5\obj\Debug\LAgrange5.exe
-C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\LAgrange5\obj\Debug\LAgrange5.pdb

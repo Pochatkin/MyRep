@@ -1,5 +1,0 @@
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Eigenvalues\Eigenvalues\bin\Debug\Eigenvalues.exe.config
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Eigenvalues\Eigenvalues\bin\Debug\Eigenvalues.exe
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Eigenvalues\Eigenvalues\bin\Debug\Eigenvalues.pdb
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Eigenvalues\Eigenvalues\obj\Debug\Eigenvalues.exe
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Eigenvalues\Eigenvalues\obj\Debug\Eigenvalues.pdb

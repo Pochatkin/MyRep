@@ -1,6 +1,0 @@
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\MethodOfGauss2\MethodOfGauss2\bin\Debug\MethodOfGauss2.exe.config
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\MethodOfGauss2\MethodOfGauss2\bin\Debug\MethodOfGauss2.exe
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\MethodOfGauss2\MethodOfGauss2\bin\Debug\MethodOfGauss2.pdb
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\MethodOfGauss2\MethodOfGauss2\obj\Debug\MethodOfGauss2.csprojResolveAssemblyReference.cache
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\MethodOfGauss2\MethodOfGauss2\obj\Debug\MethodOfGauss2.exe
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\MethodOfGauss2\MethodOfGauss2\obj\Debug\MethodOfGauss2.pdb

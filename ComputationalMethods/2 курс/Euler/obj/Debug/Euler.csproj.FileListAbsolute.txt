@@ -1,7 +1,0 @@
-C:\Users\Михаил\Dropbox\Euler\bin\Debug\Euler.exe.config
-C:\Users\Михаил\Dropbox\Выч.Мат\Euler\bin\Debug\Euler.exe.config
-C:\Users\Михаил\Dropbox\Выч.Мат\Euler\bin\Debug\Euler.exe
-C:\Users\Михаил\Dropbox\Выч.Мат\Euler\bin\Debug\Euler.pdb
-C:\Users\Михаил\Dropbox\Выч.Мат\Euler\obj\Debug\Euler.exe
-C:\Users\Михаил\Dropbox\Выч.Мат\Euler\obj\Debug\Euler.pdb
-C:\Users\Михаил\Dropbox\Выч.Мат\Euler\obj\Debug\Euler.csprojResolveAssemblyReference.cache

@@ -1,6 +1,0 @@
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\InvertMatrix\InvertMatrix\bin\Debug\InvertMatrix.exe.config
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\InvertMatrix\InvertMatrix\bin\Debug\InvertMatrix.exe
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\InvertMatrix\InvertMatrix\bin\Debug\InvertMatrix.pdb
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\InvertMatrix\InvertMatrix\obj\Debug\InvertMatrix.csprojResolveAssemblyReference.cache
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\InvertMatrix\InvertMatrix\obj\Debug\InvertMatrix.exe
-C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\InvertMatrix\InvertMatrix\obj\Debug\InvertMatrix.pdb

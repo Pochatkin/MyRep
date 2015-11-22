@@ -1,8 +1,0 @@
-c:\users\михаил\documents\visual studio 2013\Projects\Lagrange4\bin\Debug\Lagrange4.exe.config
-C:\Users\Михаил\Documents\Visual Studio 2013\Projects\Lagrange4\bin\Debug\Lagrange4.exe
-C:\Users\Михаил\Documents\Visual Studio 2013\Projects\Lagrange4\bin\Debug\Lagrange4.pdb
-C:\Users\Михаил\Documents\Visual Studio 2013\Projects\Lagrange4\obj\Debug\Lagrange4.exe
-C:\Users\Михаил\Documents\Visual Studio 2013\Projects\Lagrange4\obj\Debug\Lagrange4.pdb
-C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Lagrange4\bin\Debug\Lagrange4.exe.config
-C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Lagrange4\obj\Debug\Lagrange4.exe
-C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Lagrange4\obj\Debug\Lagrange4.pdb

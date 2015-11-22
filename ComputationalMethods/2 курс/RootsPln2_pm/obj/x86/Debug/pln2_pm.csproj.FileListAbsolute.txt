@@ -1,6 +1,0 @@
-C:\Users\Михаил\documents\visual studio 2010\Projects\pln2_pm\obj\x86\Debug\pln2_pm.csprojResolveAssemblyReference.cache
-C:\Users\Михаил\documents\visual studio 2010\Projects\pln2_pm\bin\Debug\pln2_pm.exe
-C:\Users\Михаил\documents\visual studio 2010\Projects\pln2_pm\bin\Debug\pln2_pm.pdb
-C:\Users\Михаил\documents\visual studio 2010\Projects\pln2_pm\obj\x86\Debug\pln2_pm.exe
-C:\Users\Михаил\documents\visual studio 2010\Projects\pln2_pm\obj\x86\Debug\pln2_pm.pdb
-C:\Users\Михаил\Documents\Visual Studio 2010\Projects\RootsPln2_pm\obj\x86\Debug\pln2_pm.exe

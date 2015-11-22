@@ -1,6 +1,0 @@
-c:\users\михаил\documents\visual studio 2013\Projects\Lagrange 2.4\bin\Debug\Lagrange 2.4.exe.config
-C:\Users\Михаил\Documents\Visual Studio 2013\Projects\Lagrange 2.4\bin\Debug\Lagrange 2.4.exe
-C:\Users\Михаил\Documents\Visual Studio 2013\Projects\Lagrange 2.4\bin\Debug\Lagrange 2.4.pdb
-C:\Users\Михаил\Documents\Visual Studio 2013\Projects\Lagrange 2.4\obj\Debug\Lagrange 2.4.exe
-C:\Users\Михаил\Documents\Visual Studio 2013\Projects\Lagrange 2.4\obj\Debug\Lagrange 2.4.pdb
-C:\Users\Михаил\Documents\Visual Studio 2013\Projects\Lagrange 2.4\obj\Debug\Lagrange 2.4.csprojResolveAssemblyReference.cache
