@@ -1,0 +1,11 @@
+c:\users\михаил\documents\visual studio 2013\Projects\Interpolation3\bin\Debug\Interpolation3.exe.config
+c:\users\михаил\documents\visual studio 2013\Projects\Interpolation3\bin\Debug\Interpolation3.exe
+c:\users\михаил\documents\visual studio 2013\Projects\Interpolation3\bin\Debug\Interpolation3.pdb
+c:\users\михаил\documents\visual studio 2013\Projects\Interpolation3\obj\Debug\Interpolation3.exe
+c:\users\михаил\documents\visual studio 2013\Projects\Interpolation3\obj\Debug\Interpolation3.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\Interpolation3\bin\Debug\Interpolation3.exe.config
+C:\Users\Михаил\Dropbox\Выч.Мат\Interpolation3\obj\Debug\Interpolation3.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\Interpolation3\obj\Debug\Interpolation3.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\Interpolation3\bin\Debug\Interpolation3.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\Interpolation3\bin\Debug\Interpolation3.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\Interpolation3\obj\Debug\Interpolation3.csprojResolveAssemblyReference.cache

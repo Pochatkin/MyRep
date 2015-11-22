@@ -1,0 +1,11 @@
+c:\users\михаил\documents\visual studio 2013\Projects\Integral\bin\Debug\Integral.exe.config
+C:\Users\Михаил\Documents\Visual Studio 2013\Projects\Integral\bin\Debug\Integral.exe
+C:\Users\Михаил\Documents\Visual Studio 2013\Projects\Integral\bin\Debug\Integral.pdb
+C:\Users\Михаил\Documents\Visual Studio 2013\Projects\Integral\obj\Debug\Integral.exe
+C:\Users\Михаил\Documents\Visual Studio 2013\Projects\Integral\obj\Debug\Integral.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\Integral\bin\Debug\Integral.exe.config
+C:\Users\Михаил\Dropbox\Выч.Мат\Integral\obj\Debug\Integral.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\Integral\obj\Debug\Integral.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\Integral\bin\Debug\Integral.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\Integral\bin\Debug\Integral.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\Integral\obj\Debug\Integral.csprojResolveAssemblyReference.cache

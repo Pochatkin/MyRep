@@ -1,0 +1,17 @@
+C:\Users\Михаил\documents\visual studio 2010\Projects\Newton\Newton\obj\x86\Debug\Newton.csprojResolveAssemblyReference.cache
+C:\Users\Михаил\Documents\Visual Studio 2010\Projects\Newton\Newton\bin\Debug\Newton.exe
+C:\Users\Михаил\Documents\Visual Studio 2010\Projects\Newton\Newton\bin\Debug\Newton.pdb
+C:\Users\Михаил\Documents\Visual Studio 2010\Projects\Newton\Newton\obj\x86\Debug\Newton.exe
+C:\Users\Михаил\Documents\Visual Studio 2010\Projects\Newton\Newton\obj\x86\Debug\Newton.pdb
+C:\Users\st033790\Documents\Visual Studio 2010\Projects\Newton\Newton\obj\x86\Debug\Newton.exe
+C:\Users\st033790\Documents\Visual Studio 2010\Projects\Newton\Newton\obj\x86\Debug\Newton.pdb
+C:\Users\st033790\Documents\Visual Studio 2010\Projects\Newton\Newton\bin\Debug\Newton.exe
+C:\Users\st033790\Documents\Visual Studio 2010\Projects\Newton\Newton\bin\Debug\Newton.pdb
+C:\Users\st033790\Documents\Visual Studio 2010\Projects\Newton\Newton\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\Users\Михаил\Dropbox\Выч.Мат\Newton\Newton\obj\x86\Debug\Newton.exe
+c:\Users\Михаил\Dropbox\Выч.Мат\Newton\Newton\obj\x86\Debug\Newton.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\Newton\Newton\bin\Debug\Newton.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\Newton\Newton\bin\Debug\Newton.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\Newton\Newton\obj\x86\Debug\Newton.csprojResolveAssemblyReference.cache
+C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Newton\Newton\obj\x86\Debug\Newton.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Newton\Newton\obj\x86\Debug\Newton.pdb

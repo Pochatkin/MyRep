@@ -1,0 +1,5 @@
+c:\users\михаил\documents\visual studio 2013\Projects\Lagrange 2.2\bin\Debug\Lagrange 2.2.exe.config
+c:\users\михаил\documents\visual studio 2013\Projects\Lagrange 2.2\bin\Debug\Lagrange 2.2.exe
+c:\users\михаил\documents\visual studio 2013\Projects\Lagrange 2.2\bin\Debug\Lagrange 2.2.pdb
+c:\users\михаил\documents\visual studio 2013\Projects\Lagrange 2.2\obj\Debug\Lagrange 2.2.exe
+c:\users\михаил\documents\visual studio 2013\Projects\Lagrange 2.2\obj\Debug\Lagrange 2.2.pdb
