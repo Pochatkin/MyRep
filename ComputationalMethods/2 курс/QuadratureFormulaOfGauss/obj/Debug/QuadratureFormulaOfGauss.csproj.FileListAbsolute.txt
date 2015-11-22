@@ -1,0 +1,12 @@
+c:\users\михаил\documents\visual studio 2013\Projects\QuadratureFormulaOfGauss\bin\Debug\QuadratureFormulaOfGauss.exe.config
+c:\users\михаил\documents\visual studio 2013\Projects\QuadratureFormulaOfGauss\bin\Debug\QuadratureFormulaOfGauss.exe
+c:\users\михаил\documents\visual studio 2013\Projects\QuadratureFormulaOfGauss\bin\Debug\QuadratureFormulaOfGauss.pdb
+c:\users\михаил\documents\visual studio 2013\Projects\QuadratureFormulaOfGauss\obj\Debug\QuadratureFormulaOfGauss.csprojResolveAssemblyReference.cache
+c:\users\михаил\documents\visual studio 2013\Projects\QuadratureFormulaOfGauss\obj\Debug\QuadratureFormulaOfGauss.exe
+c:\users\михаил\documents\visual studio 2013\Projects\QuadratureFormulaOfGauss\obj\Debug\QuadratureFormulaOfGauss.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\QuadratureFormulaOfGauss\bin\Debug\QuadratureFormulaOfGauss.exe.config
+C:\Users\Михаил\Dropbox\Выч.Мат\QuadratureFormulaOfGauss\obj\Debug\QuadratureFormulaOfGauss.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\QuadratureFormulaOfGauss\obj\Debug\QuadratureFormulaOfGauss.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\QuadratureFormulaOfGauss\bin\Debug\QuadratureFormulaOfGauss.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\QuadratureFormulaOfGauss\bin\Debug\QuadratureFormulaOfGauss.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\QuadratureFormulaOfGauss\obj\Debug\QuadratureFormulaOfGauss.csprojResolveAssemblyReference.cache

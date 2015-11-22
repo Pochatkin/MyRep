@@ -1,0 +1,15 @@
+c:\users\михаил\documents\visual studio 2010\Projects\Interpolation\bin\Debug\Interpolation.exe
+c:\users\михаил\documents\visual studio 2010\Projects\Interpolation\bin\Debug\Interpolation.pdb
+c:\users\михаил\documents\visual studio 2010\Projects\Interpolation\obj\x86\Debug\Interpolation.exe
+c:\users\михаил\documents\visual studio 2010\Projects\Interpolation\obj\x86\Debug\Interpolation.pdb
+C:\Users\Михаил\documents\visual studio 2010\Projects\Interpolation\obj\x86\Debug\Interpolation.csprojResolveAssemblyReference.cache
+C:\Users\st033790\Documents\Visual Studio 2010\Projects\Interpolation\obj\x86\Debug\Interpolation.exe
+C:\Users\st033790\Documents\Visual Studio 2010\Projects\Interpolation\obj\x86\Debug\Interpolation.pdb
+C:\Users\st033790\Documents\Visual Studio 2010\Projects\Interpolation\bin\Debug\Interpolation.exe
+C:\Users\st033790\Documents\Visual Studio 2010\Projects\Interpolation\bin\Debug\Interpolation.pdb
+C:\Users\st033790\Documents\Visual Studio 2010\Projects\Interpolation\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Михаил\Dropbox\Выч.Мат\Interpolation\obj\x86\Debug\Interpolation.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\Interpolation\obj\x86\Debug\Interpolation.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\Interpolation\bin\Debug\Interpolation.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\Interpolation\bin\Debug\Interpolation.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\Interpolation\obj\x86\Debug\Interpolation.csprojResolveAssemblyReference.cache

@@ -1,0 +1,18 @@
+C:\Users\Михаил\Dropbox\Adams\bin\Debug\Adams.exe.config
+C:\Users\Михаил\Dropbox\Adams\bin\Debug\Adams.exe
+C:\Users\Михаил\Dropbox\Adams\bin\Debug\Adams.pdb
+C:\Users\Михаил\Dropbox\Adams\obj\Debug\Adams.csprojResolveAssemblyReference.cache
+C:\Users\Михаил\Dropbox\Adams\obj\Debug\Adams.exe
+C:\Users\Михаил\Dropbox\Adams\obj\Debug\Adams.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\Adams\bin\Debug\Adams.exe.config
+C:\Users\Михаил\Dropbox\Выч.Мат\Adams\obj\Debug\Adams.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\Adams\obj\Debug\Adams.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\Adams\bin\Debug\Adams.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\Adams\bin\Debug\Adams.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\Adams\obj\Debug\Adams.csprojResolveAssemblyReference.cache
+C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Adams\bin\Debug\Adams.exe.config
+C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Adams\obj\Debug\Adams.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Adams\obj\Debug\Adams.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Adams\bin\Debug\Adams.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Adams\bin\Debug\Adams.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Adams\obj\Debug\Adams.csprojResolveAssemblyReference.cache

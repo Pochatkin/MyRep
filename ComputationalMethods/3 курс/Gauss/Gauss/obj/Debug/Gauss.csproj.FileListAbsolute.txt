@@ -1,0 +1,12 @@
+c:\users\михаил\documents\visual studio 2015\Projects\Gauss\Gauss\bin\Debug\Gauss.exe.config
+c:\users\михаил\documents\visual studio 2015\Projects\Gauss\Gauss\bin\Debug\Gauss.exe
+c:\users\михаил\documents\visual studio 2015\Projects\Gauss\Gauss\bin\Debug\Gauss.pdb
+c:\users\михаил\documents\visual studio 2015\Projects\Gauss\Gauss\obj\Debug\Gauss.csprojResolveAssemblyReference.cache
+c:\users\михаил\documents\visual studio 2015\Projects\Gauss\Gauss\obj\Debug\Gauss.exe
+c:\users\михаил\documents\visual studio 2015\Projects\Gauss\Gauss\obj\Debug\Gauss.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Gauss\Gauss\bin\Debug\Gauss.exe.config
+C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Gauss\Gauss\obj\Debug\Gauss.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Gauss\Gauss\obj\Debug\Gauss.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Gauss\Gauss\bin\Debug\Gauss.exe
+C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Gauss\Gauss\bin\Debug\Gauss.pdb
+C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Gauss\Gauss\obj\Debug\Gauss.csprojResolveAssemblyReference.cache
