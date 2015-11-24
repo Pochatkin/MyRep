@@ -1,5 +1,3 @@
-package java;
-
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
@@ -15,7 +13,7 @@ public class Tree<T1 extends Comparable<T1>, T2> {
         ArrayList<Node<T1, T2>> children;
 
         Node(T1 key, T2 value) {
-            this(key, value, null);
+            this(key, value,new ArrayList<Node<T1, T2>>());
         }
 
         Node(T1 key, T2 value, ArrayList<Node<T1, T2>> children) {
@@ -25,15 +23,15 @@ public class Tree<T1 extends Comparable<T1>, T2> {
         }
 
 
-        private Node<T1, T2> search(Node<T1, T2> ObjSearcher, ArrayList<Node<T1, T2>> ListSearcher) {
-            Node<T1, T2> result = new Node<>(null, null);
+        private T1 search(T1 ObjSearcher, ArrayList<Node<T1, T2>> ListSearcher) {
+            T1 result = null;
             for (int i = 0; i < ListSearcher.size(); i++) {
-                if (ObjSearcher.equals(ListSearcher.get(i))) {
-                    result = ListSearcher.get(i);
+                if (ObjSearcher.equals(ListSearcher.get(i).key)) {
+                    result = ListSearcher.get(i).key;
                     break;
                 }
             }
-            if (result.key.equals(null)) {
+            if (result == null) {
                 throw new NoSuchElementException("Incorrect way");
             } else {
                 return result;
@@ -46,30 +44,27 @@ public class Tree<T1 extends Comparable<T1>, T2> {
     private Node<T1, T2> root = null;
 
 
-    //Need to end
-    private ArrayList<Node<T1, T2>> parser(String way) {
-        ArrayList<Node<T1, T2>> tempArr = new ArrayList<>();
-        int i = 0;
+    public ArrayList<T1> parser(String way) {
+        ArrayList<T1> tempArr = new ArrayList<>();
         int j = 0;
         String tempStr = "";
-        T1 tempNode;
+        T1 tempT1;
         for (int k = 0; k < way.length(); k++) {
-            if (way.charAt(i) != '/') {
-                tempStr += way.charAt(i);
+            if (way.charAt(k) != '/') {
+                tempStr += way.charAt(k);
             } else {
-                tempNode = (T1) tempStr;
-                // tempArr.add(j,tempNode.clone());    //Clone to T2(mby transform T2 to Object)
+                tempT1 = (T1) tempStr;
+                tempArr.add(j,tempT1);
+                j++;
+                tempStr = "";
             }
         }
-
         return tempArr;
-
     }
-
 
     public void add(String way, T1 key, T2 value) {
         if (root != null) {
-            ArrayList<Node<T1, T2>> wayArr = new ArrayList<>();
+            ArrayList<T1> wayArr = new ArrayList<>();
             wayArr = parser(way);
             Node<T1, T2> currentNode = root;
             for (int i = 0; i < wayArr.size(); i++) {
@@ -78,9 +73,8 @@ public class Tree<T1 extends Comparable<T1>, T2> {
             Node<T1, T2> Added = new Node<T1, T2>(key, value);
             currentNode.children.add(currentNode.children.size(), Added);
         } else {
-            root.key = key;
-            root.value = value;
-            root.children = new ArrayList<>();
+            Node<T1,T2> temp = new Node<T1, T2>(key,value);
+            root = temp;
         }
     }
 
@@ -99,6 +93,8 @@ public class Tree<T1 extends Comparable<T1>, T2> {
             deleted = null;
         }
     }
+
+
 
 
 
