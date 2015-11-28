@@ -23,11 +23,11 @@ public class Tree<T1 extends Comparable<T1>, T2> {
         }
 
 
-        private T1 search(T1 ObjSearcher, ArrayList<Node<T1, T2>> ListSearcher) {
-            T1 result = null;
+        private Node<T1,T2> search(T1 ObjSearcher, ArrayList<Node<T1, T2>> ListSearcher){
+            Node<T1,T2> result = null;
             for (int i = 0; i < ListSearcher.size(); i++) {
                 if (ObjSearcher.equals(ListSearcher.get(i).key)) {
-                    result = ListSearcher.get(i).key;
+                    result = ListSearcher.get(i);
                     break;
                 }
             }
@@ -37,8 +37,6 @@ public class Tree<T1 extends Comparable<T1>, T2> {
                 return result;
             }
         }
-
-
     }
 
     private Node<T1, T2> root = null;
@@ -50,13 +48,17 @@ public class Tree<T1 extends Comparable<T1>, T2> {
         String tempStr = "";
         T1 tempT1;
         for (int k = 0; k < way.length(); k++) {
-            if (way.charAt(k) != '/') {
+            if (way.charAt(k) != '/' ) {
                 tempStr += way.charAt(k);
             } else {
                 tempT1 = (T1) tempStr;
                 tempArr.add(j,tempT1);
                 j++;
                 tempStr = "";
+            }
+            if(k == way.length() - 1){
+                tempT1 = (T1) tempStr;
+                tempArr.add(j,tempT1);
             }
         }
         return tempArr;
@@ -67,7 +69,7 @@ public class Tree<T1 extends Comparable<T1>, T2> {
             ArrayList<T1> wayArr = new ArrayList<>();
             wayArr = parser(way);
             Node<T1, T2> currentNode = root;
-            for (int i = 0; i < wayArr.size(); i++) {
+            for (int i = 1; i < wayArr.size(); i++) {
                 currentNode = currentNode.search(wayArr.get(i), currentNode.children);
             }
             Node<T1, T2> Added = new Node<T1, T2>(key, value);
@@ -78,18 +80,17 @@ public class Tree<T1 extends Comparable<T1>, T2> {
         }
     }
 
-    public void delete(String way, T1 key) {
+    public void delete(String way, T1 key)  {
         if (root == null) {
             throw new NoSuchElementException("Tree is empty");
         } else {
             Node<T1,T2> currentNode = root;
-            ArrayList<Node<T1,T2>> wayArr = new ArrayList<>();
+            ArrayList<T1> wayArr = new ArrayList<>();
             wayArr = parser(way);
             for(int i = 0; i < wayArr.size(); i++){
                 currentNode = currentNode.search(wayArr.get(i), currentNode.children);
             }
-            Node<T1,T2> objSearcher = new Node<T1, T2>(key,null);
-            Node<T1,T2> deleted = currentNode.search(objSearcher,currentNode.children);
+            Node<T1,T2> deleted = currentNode.search(key,currentNode.children);
             deleted = null;
         }
     }
