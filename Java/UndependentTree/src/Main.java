@@ -11,5 +11,6 @@ public class Main {
         tree.add("root", "number2", 4);
         tree.add("root/number2", "number3", 7);
         System.out.println();
+        System.out.println();
     }
 }
