@@ -184,7 +184,7 @@ namespace Eigenvalues
 			{
 				Y[i] = 1;
 			}
-			double newLyambda = 0;
+			double newLyambda = 100;
 			double[,] W = new double[3,3];
 			while (newLyambda - Lyambda >= eps)
 			{
@@ -201,8 +201,10 @@ namespace Eigenvalues
 				}
 				Z = Y;
 				Y = Gauss.start(W,Z);
+				IW = Matr
 
 			}
+			Matrix.print(W);
 
 
 

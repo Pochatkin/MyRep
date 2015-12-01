@@ -5,3 +5,9 @@ C:\Users\Михаил\Dropbox\Выч.Мат\Euler\bin\Debug\Euler.pdb
 C:\Users\Михаил\Dropbox\Выч.Мат\Euler\obj\Debug\Euler.exe
 C:\Users\Михаил\Dropbox\Выч.Мат\Euler\obj\Debug\Euler.pdb
 C:\Users\Михаил\Dropbox\Выч.Мат\Euler\obj\Debug\Euler.csprojResolveAssemblyReference.cache
+C:\Users\Михаил\Documents\GitHub\MyRep\ComputationalMethods\2 курс\Euler\bin\Debug\Euler.exe.config
+C:\Users\Михаил\Documents\GitHub\MyRep\ComputationalMethods\2 курс\Euler\obj\Debug\Euler.exe
+C:\Users\Михаил\Documents\GitHub\MyRep\ComputationalMethods\2 курс\Euler\obj\Debug\Euler.pdb
+C:\Users\Михаил\Documents\GitHub\MyRep\ComputationalMethods\2 курс\Euler\bin\Debug\Euler.exe
+C:\Users\Михаил\Documents\GitHub\MyRep\ComputationalMethods\2 курс\Euler\bin\Debug\Euler.pdb
+C:\Users\Михаил\Documents\GitHub\MyRep\ComputationalMethods\2 курс\Euler\obj\Debug\Euler.csprojResolveAssemblyReference.cache

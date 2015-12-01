@@ -10,3 +10,6 @@ C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Gauss\Gauss\obj\Debug\Gau
 C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Gauss\Gauss\bin\Debug\Gauss.exe
 C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Gauss\Gauss\bin\Debug\Gauss.pdb
 C:\Users\Михаил\Dropbox\Выч.Мат\3 курс\Gauss\Gauss\obj\Debug\Gauss.csprojResolveAssemblyReference.cache
+C:\Users\Михаил\Documents\GitHub\MyRep\ComputationalMethods\3 курс\Gauss\Gauss\bin\Debug\Gauss.exe.config
+C:\Users\Михаил\Documents\GitHub\MyRep\ComputationalMethods\3 курс\Gauss\Gauss\obj\Debug\Gauss.exe
+C:\Users\Михаил\Documents\GitHub\MyRep\ComputationalMethods\3 курс\Gauss\Gauss\obj\Debug\Gauss.pdb

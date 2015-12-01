@@ -181,5 +181,28 @@ namespace Eigenvalues
 				Console.WriteLine();
 			}
 		}
+
+		public static double[,] invert(double[,] A)
+		{
+			double[,] b = new double[3,3];
+			double[,] x = new double[3,3];
+			for(int i = 0; i < 3; i++)
+			{
+				for(int j = 0; j < 3; j++)
+				{
+					if(i == j)
+					{
+						b[i, i] = 1;
+					}
+					else
+					{
+						b[i, j] = 0;
+					}
+				}
+					
+			}
+
+			return b;
+		}
 	}
 }
