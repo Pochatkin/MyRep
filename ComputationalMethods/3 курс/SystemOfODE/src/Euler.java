@@ -15,7 +15,7 @@ public class Euler {
         double[] tempY = new double[2];
         double[][] W = new double[2][2];
         double[][] E = new double[2][2];
-        double h = 0.05;
+        double h = 0.1;
         double x = 0;
         int k = 0;
         tempY[0] = tempY[1] = 1;
@@ -39,6 +39,7 @@ public class Euler {
             tempY = multi(W, tempY);
             x += h;
         }
+
         return Y;
     }
 

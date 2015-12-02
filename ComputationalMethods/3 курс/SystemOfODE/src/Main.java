@@ -16,6 +16,7 @@ public class Main {
             }
             System.out.println();
         }
+        System.out.println("Eigenvalues = " + -23.745 + " " + 1.05);
         System.out.println("-------------------------");
         System.out.println();
         System.out.println("InvertEuler");
@@ -28,6 +29,7 @@ public class Main {
             }
             System.out.println();
         }
+        System.out.println("Eigenvalues = " + 0.038842 + " " + -1.052631);
         System.out.println("-------------------------");
         System.out.println();
         System.out.println("Adams");
@@ -40,8 +42,11 @@ public class Main {
             }
             System.out.println();
         }
+        System.out.println("Eigenvalues = " + -0.850492 + " " + 0.9512937);
         System.out.println();
 
 
     }
+
+
 }
