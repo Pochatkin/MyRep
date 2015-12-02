@@ -20,7 +20,7 @@ namespace Eigenvalues
 			Console.WriteLine("----------------------------------");
 			def();
 			Console.WriteLine("Method of Sсalar:");
-			MethodOfScal();
+			MethodOfScal(Matrix.matrix);
 			Console.WriteLine("----------------------------------");
 			Console.WriteLine("Spectrum:");
 			spectrum();
@@ -95,7 +95,7 @@ namespace Eigenvalues
 			return (temp);
 		}
 
-		static void MethodOfScal()
+		static void MethodOfScal(double[,] matrix)
 		{
 			double eps = 0.000001;
 			double[] Y = new double[3];
@@ -106,8 +106,8 @@ namespace Eigenvalues
 			do
 			{
 				Olyambda = Nlyambda;
-				Nlyambda = Matrix.scal(multi(Matrix.matrix, Y), Y) / Matrix.scal(Y, Y);
-				Y = multi(Matrix.matrix, Y);
+				Nlyambda = Matrix.scal(multi(matrix, Y), Y) / Matrix.scal(Y, Y);
+				Y = multi(matrix, Y);
 				l++;
 			}
 			while (Math.Abs(Nlyambda - Olyambda) > eps);
@@ -122,7 +122,7 @@ namespace Eigenvalues
 			double[] temp = new double[3];
 			for (int i = 0; i < 3; i++)
 			{
-				temp[i] = multi(Matrix.matrix, Y)[i] - Nlyambda * Y[i];
+				temp[i] = multi(matrix, Y)[i] - Nlyambda * Y[i];
 			}
 			Console.WriteLine("Невязка = {0} ", norm(temp));
 		}
@@ -177,17 +177,19 @@ namespace Eigenvalues
 		static void Wieland() 
 		{
 			double eps = 0.0001;
-			double Lyambda = 1;
+			double oldLyambda;
 			double[] Y = new double[3];
 			double[] Z = new double[3];
 			for (int i = 0; i < 3; i++)
 			{
 				Y[i] = 1;
 			}
-			double newLyambda = 100;
+			double newLyambda = 1;
+			double[,] invW = new double[3,3];
 			double[,] W = new double[3,3];
-			while (newLyambda - Lyambda >= eps)
+			do
 			{
+				oldLyambda = newLyambda;
 				for (int i = 0; i < 3; i++)
 				{
 					for (int j = 0; j < 3; j++)
@@ -197,14 +199,29 @@ namespace Eigenvalues
 				}
 				for (int i = 0; i < 3; i++)
 				{
-					W[i, i] -= Lyambda;
+					W[i, i] -= newLyambda;
 				}
 				Z = Y;
 				Y = Gauss.start(W,Z);
-				IW = Matr
+				invW = Gauss.InverseMatrix(W);
+				
+				double[] scalY = new double[3];
+				scalY[0] = scalY[1] = scalY[2] = 1;
+				double Olyambda = 0;
+				double Nlyambda = 0;
+				do
+				{
+					Olyambda = Nlyambda;
+					Nlyambda = Matrix.scal(multi(invW, Y), Y) / Matrix.scal(Y, Y);
+					Y = multi(invW, Y);
+				}
+				while(Math.Abs(Nlyambda - Olyambda) > eps);
+				newLyambda += 1 / Nlyambda;
+				
 
 			}
-			Matrix.print(W);
+			while (Math.Abs(newLyambda - oldLyambda) >= eps);
+			Console.Write("L = {0}", newLyambda);
 
 
 
