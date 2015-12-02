@@ -85,17 +85,18 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
                 //Intent intent = new Intent(SignInActivity.this, DialogsActivity.class);
                 //startActivity(intent);
                 try {
-                    String email = mEmailView.getText().toString();
-                    email = email.trim();
-                    String password = mPasswordView.getText().toString();
-                    Login login = new Login(email);
-                    Pass pass = new Pass(password);
-                    Package signInPackage = new Package(PackageType.REQ_SIGN_IN,login,pass);
-                    Client client = new Client();
+                        String email = mEmailView.getText().toString();
+                        email = email.trim();
+                        String password = mPasswordView.getText().toString();
+                        Login login = new Login(email);
+                        Pass pass = new Pass(password);
+                        Package signInPackage = new Package(PackageType.REQ_SIGN_IN,login,pass);
+                        Client client = new Client();
+                        client.start();
+                        client.sendPackage(signInPackage);
 
-
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                 }
 
 

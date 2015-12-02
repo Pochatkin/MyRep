@@ -135,7 +135,7 @@ public class Client {
         return sslContext.getSocketFactory();
     }
 
-    private void sendPackage(Package aPackage) throws IOException {
+    public void sendPackage(Package aPackage) throws IOException {
         byte[] serialized = aPackage.serialize();
         System.out.println("length of package: " + serialized.length);
         OutputStream outputstream = sslSocket.getOutputStream();

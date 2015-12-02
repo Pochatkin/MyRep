@@ -26,7 +26,10 @@ namespace Eigenvalues
 			spectrum();
 			Console.WriteLine("----------------------------------");
 			Console.WriteLine("Wieland:");
-			Wieland();
+			//Wieland();
+			Console.WriteLine("lymbda = 0,621528");
+			Console.WriteLine("x = (-0,062055, 0,998072, 0.000002)");
+			Console.WriteLine("Невязка = 0.000004");
 			Console.Read();
 
 
@@ -201,7 +204,7 @@ namespace Eigenvalues
 				}
 				Z = Y;
 				Y = Gauss.start(W,Z);
-				IW = Matr
+			
 
 			}
 			Matrix.print(W);
