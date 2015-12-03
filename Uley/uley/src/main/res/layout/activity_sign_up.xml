@@ -32,7 +32,7 @@
 
     <Button
         style="?android:textAppearanceSmall"
-        android:id="@+id/email_sign_up_activity"
+        android:id="@+id/email_sign_up_buttom"
         android:layout_width="129dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

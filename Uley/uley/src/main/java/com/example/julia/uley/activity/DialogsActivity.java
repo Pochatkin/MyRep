@@ -37,6 +37,53 @@ public class DialogsActivity extends AppCompatActivity {
     ArrayList<Dialog> dialogs = new ArrayList<Dialog>();
     DialogsAdapter dialogAdapter;
 
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.dialogs_activity);
+        mSettingsLogin = getSharedPreferences(APP_PREFERENCES_LOGIN, Context.MODE_PRIVATE);
+        mSettingsLastMess = getSharedPreferences(APP_PREFERENCES_LASTMESS, Context.MODE_PRIVATE);
+
+
+        // создаем адаптер
+        fillData();
+        dialogAdapter = new DialogsAdapter(this, dialogs);
+
+        // настраиваем список
+        ListView dialogsListView = (ListView) findViewById(R.id.roomsList);
+        dialogsListView.setAdapter(dialogAdapter);
+        dialogsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent intent = new Intent(DialogsActivity.this, ChatActivity.class);
+                intent.putExtra("key",position);  //Вторым параметром нужно передать логин
+                startActivity(intent);
+            }
+        });
+
+        onPause();
+    }
+
+    // генерируем данные для адаптера
+    private void fillData() {
+        onResume();
+        String[] tempFriendList =  new String[friedList.size()];
+        String[] tempLastMessList = new String[lastMessageList.size()];
+        friedList.toArray(tempFriendList);
+        lastMessageList.toArray(tempLastMessList);
+        if (friedList.isEmpty()) {
+            dialogs = new ArrayList<>();
+        }
+        else{
+            for(int i = 0; i < friedList.size(); i++){
+                Login tempLogin = new Login(tempFriendList[i]);
+                Dialog tempDialog = new Dialog(tempLogin,tempLastMessList[i]);
+                dialogs.add(i,tempDialog);
+            }
+        }
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -59,54 +106,6 @@ public class DialogsActivity extends AppCompatActivity {
         }
         if(mSettingsLastMess.contains(APP_PREFERENCES_COUNTER_LASTMESS)){
             lastMessageList = mSettingsLastMess.getStringSet(APP_PREFERENCES_COUNTER_LASTMESS, lastMessageList);  // Так же не ясен второй параметр
-        }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialogs_activity);
-        mSettingsLogin = getSharedPreferences(APP_PREFERENCES_LOGIN, Context.MODE_PRIVATE);
-        mSettingsLastMess = getSharedPreferences(APP_PREFERENCES_LASTMESS, Context.MODE_PRIVATE);
-
-        //ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        // progressBar.setVisibility(View.VISIBLE);
-
-        // создаем адаптер
-        fillData();
-        dialogAdapter = new DialogsAdapter(this, dialogs);
-
-        // настраиваем список
-        ListView dialogsListView = (ListView) findViewById(R.id.roomsList);
-        dialogsListView.setAdapter(dialogAdapter);
-        dialogsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Intent intent = new Intent(DialogsActivity.this, ChatActivity.class);
-                intent.putExtra("key",position);
-                startActivity(intent);
-            }
-        });
-
-        onPause();
-    }
-
-    // генерируем данные для адаптера
-    private void fillData() {
-        String[] tempFriendList =  new String[friedList.size()];
-        String[] tempLastMessList = new String[lastMessageList.size()];
-        friedList.toArray(tempFriendList);
-        lastMessageList.toArray(tempLastMessList);
-        onResume();
-        if (friedList.isEmpty()) {
-            dialogs = new ArrayList<>();
-        }
-        else{
-            for(int i = 0; i < friedList.size(); i++){
-                Login tempLogin = new Login(tempFriendList[i]);
-                Dialog tempDialog = new Dialog(tempLogin,tempLastMessList[i]);
-                dialogs.add(i,tempDialog);
-            }
         }
     }
 
