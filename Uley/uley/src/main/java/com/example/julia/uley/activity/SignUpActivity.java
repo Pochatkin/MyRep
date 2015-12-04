@@ -11,11 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.julia.uley.R;
-import com.example.julia.uley.client.Client;
-import com.example.julia.uley.common.Login;
-import com.example.julia.uley.common.Package;
-import com.example.julia.uley.common.PackageType;
-import com.example.julia.uley.common.Pass;
 
 /**
  * Created by Михаил on 29.11.2015.
@@ -39,9 +34,10 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) { // поменять параметры мб.
-
+                    //вывести ошибку
                     return true;
                 }
+                //TODO: Need to compare password and passwordToo ...
                 return false;
             }
         });
@@ -49,19 +45,19 @@ public class SignUpActivity extends AppCompatActivity {
         mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Trying send Package to server
-                try {
-                    String email = mEmailView.getText().toString();
-                    email = email.trim();
-                    String password = mPasswordView.getText().toString();
-                    Login login = new Login(email);
-                    Pass pass = new Pass(password);
-                    Package signUpPackage = new Package(PackageType.REQ_SIGN_UP, login, pass);
-                    Client client = new Client();
-                    client.sendPackage(signUpPackage);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                //TODO: Trying send Package to server ...
+//                try {
+//                    String email = mEmailView.getText().toString();
+//                    email = email.trim();
+//                    String password = mPasswordView.getText().toString();
+//                    Login login = new Login(email);
+//                    Pass pass = new Pass(password);
+//                    Package signUpPackage = new Package(PackageType.REQ_SIGN_UP, login, pass);
+//                    Client client = new Client();
+//                    client.sendPackage(signUpPackage);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
             }
         });
     }

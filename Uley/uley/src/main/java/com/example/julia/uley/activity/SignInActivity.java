@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
@@ -26,8 +27,10 @@ import android.widget.TextView;
 
 import com.example.julia.uley.R;
 import com.example.julia.uley.client.Client;
-import com.example.julia.uley.common.*;
+import com.example.julia.uley.common.Login;
 import com.example.julia.uley.common.Package;
+import com.example.julia.uley.common.PackageType;
+import com.example.julia.uley.common.Pass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +62,9 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = new Intent(SignInActivity.this, ChatActivity.class);
+        startActivity(intent);
+
         setContentView(R.layout.activity_sign_in);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);

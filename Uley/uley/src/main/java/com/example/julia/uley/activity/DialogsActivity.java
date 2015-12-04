@@ -118,9 +118,9 @@ public class DialogsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.rooms, menu);
         MenuItem addItem = menu.findItem(R.id.action_add);
-        MenuItem signoutItem = menu.findItem(R.id.action_sign_out);
+        MenuItem signOutItem = menu.findItem(R.id.action_sign_out);
 
-        signoutItem.setOnMenuItemClickListener(
+        signOutItem.setOnMenuItemClickListener(
                 new MenuItem.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
