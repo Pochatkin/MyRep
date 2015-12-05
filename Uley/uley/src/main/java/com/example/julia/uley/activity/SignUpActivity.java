@@ -1,5 +1,6 @@
 package com.example.julia.uley.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -24,12 +25,14 @@ public class SignUpActivity extends AppCompatActivity {
 
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private static Context context;
     private EditText mPasswordTooView;
     private SignInActivity.UserLoginTask mAuthTask = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        context = getApplicationContext();
         setContentView(R.layout.activity_sign_up);
 
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -58,7 +61,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Login login = new Login(email);
                     Pass pass = new Pass(password);
                     Package signUpPackage = new Package(PackageType.REQ_SIGN_UP, login, pass);
-                    Client client = new Client();
+                    Client client = new Client(context);
                     client.start(signUpPackage);
                 } catch (Exception e) {
                     e.printStackTrace();

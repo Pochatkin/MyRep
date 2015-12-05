@@ -26,6 +26,7 @@ public class ChatActivity extends AppCompatActivity {
     public static final String APP_PREFERENCES_COUNTER_LOGIN = "LoginCounter";
     public static final String APP_PREFERENCES_POSTHISTORY = "MessSettings";
     public static final String APP_PREFERENCES_COUNTER_POSTHISTORY = "MessCounter";
+    private static Context context;
     private SharedPreferences mSettingsLogin;
     private SharedPreferences mSettingsHistory;
     private Set<String> friedList;
@@ -36,15 +37,18 @@ public class ChatActivity extends AppCompatActivity {
     Login login  = new Login("Bob");
     private EditText messange;
 
+    public static Context getContext(){
+        return context;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat_activity);
         mSettingsLogin = getSharedPreferences(APP_PREFERENCES_LOGIN, Context.MODE_PRIVATE);
         mSettingsHistory = getSharedPreferences(APP_PREFERENCES_POSTHISTORY, Context.MODE_PRIVATE);
-
         //ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         // progressBar.setVisibility(View.VISIBLE);
+        context = getBaseContext();
 
 
         // создаем адаптер
@@ -68,9 +72,15 @@ public class ChatActivity extends AppCompatActivity {
                     String temp = messange.toString();
                     Package aPackage = new Package(temp, new Login("T"));
                     Package loginPackage = new Package(PackageType.REQ_SIGN_IN,new Login("M"),new Pass("123"));
+
                     Client client = new Client();
-                    client.start(loginPackage);
-                    client.start(aPackage);
+
+                    client.send(loginPackage);
+                    //TODO: wait RESP
+                    //client.getPackage();
+
+                    client.send(aPackage);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

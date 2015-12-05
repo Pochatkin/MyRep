@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -57,13 +58,16 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
+    private static Context context;
     private View mLoginFormView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = getApplicationContext();
         Intent intent = new Intent(SignInActivity.this, ChatActivity.class);
         startActivity(intent);
+
 
         setContentView(R.layout.activity_sign_in);
         // Set up the login form.
@@ -92,7 +96,7 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
                     email = email.trim();
                     String password = mPasswordView.getText().toString();
                     Package signInPackage = new Package(PackageType.REQ_SIGN_IN, new Login(email), new Pass(password));
-                    Client client = new Client();
+                    Client client = new Client(context);
                     client.start(signInPackage);
                 } catch (Exception e) {
                     e.printStackTrace();

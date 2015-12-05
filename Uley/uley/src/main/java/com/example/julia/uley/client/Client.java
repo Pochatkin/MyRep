@@ -1,9 +1,6 @@
 package com.example.julia.uley.client;
 
-import com.example.julia.uley.common.Login;
 import com.example.julia.uley.common.Package;
-import com.example.julia.uley.common.PackageType;
-import com.example.julia.uley.common.Pass;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,7 +8,7 @@ import java.io.FileOutputStream;
 import java.security.KeyStore;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
-import java.util.Scanner;
+import java.util.ArrayDeque;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
@@ -23,69 +20,65 @@ import javax.net.ssl.TrustManagerFactory;
  * Created by Сергей on 20.11.2015.
  */
 public class Client {
-
     private static String tsName = "src/res/client_key_store.jks";
     private static String ServerCrtName = "src/res/server.crt";
-
     private static final int TIMEOUT = 500;
     private static final int PORT = 3128;
 
+    private ArrayDeque<Package> arrayDeque;
+
     private Sender sender;
-    private Listener listener;
 
     private SSLSocketFactory socketFactory;
     private SSLSocket sslSocket;
 
-    private Package tempPackage;
-
     public Client() throws Exception {
+
         socketFactory = getSocketFactory();
-        sslSocket = (SSLSocket) socketFactory.createSocket("192.168.1.193", PORT);
+        sslSocket = (SSLSocket) socketFactory.createSocket("localhost", PORT);
         sslSocket.setSoTimeout(TIMEOUT); //ждем ответа TIMEOUT миллисек
 
+        arrayDeque = new ArrayDeque<Package>();
         sender = new Sender(sslSocket);
-        listener = new Listener(sslSocket);
-    }
 
-    //TODO:Very very bad
-    public Package start(Package senderPackage) throws Exception {
-        tempPackage = null;
         //В отдельном потоке принимаем пакеты
-        Thread t = new Thread(new Runnable() {
-            public void run() {
-                tempPackage = listener.start();
-
-            }
-        });
-        t.start();
-
-        //Отправляем пакет
-        sender.sendPackage(senderPackage);
-        return tempPackage;
+        new Listener(sslSocket, arrayDeque);
     }
 
-    private Package stringToPackage(String str) throws Exception {
-
-        Scanner scanner = new Scanner(str).useDelimiter("; ");
-
-        String command = scanner.next();
-        String login = scanner.next();
-        String passOrMessage = scanner.next();
-
-
-        switch (command) {
-            case "sign in":
-                return new Package(PackageType.REQ_SIGN_IN, new Login(login), new Pass(passOrMessage));
-            case "sign up":
-                return new Package(PackageType.REQ_SIGN_UP, new Login(login), new Pass(passOrMessage));
-            case "sign out":
-                return new Package(PackageType.REQ_SIGN_OUT);
-            case "send":
-                return new Package(passOrMessage, new Login(login));
-            default:
-                throw new Exception();
-        }
+    public void send(Package aPackage) throws Exception {
+        sender.sendPackage(aPackage);
     }
+
+    public Package getPackage() {
+        if(arrayDeque.isEmpty()) return null;
+
+        Package pack =  arrayDeque.getFirst();
+        arrayDeque.removeFirst();
+        return  pack;
+    }
+
+//    private Package stringToPackage(String str) throws Exception {
+//
+//        Scanner scanner = new Scanner(str).useDelimiter("; ");
+//
+//        String command = scanner.next();
+//        String login = scanner.next();
+//        String passOrMessage = scanner.next();
+//
+//
+//        switch (command) {
+//            case "sign in":
+//                return new Package(PackageType.REQ_SIGN_IN, new Login(login), new Pass(passOrMessage));
+//            case "sign up":
+//                return new Package(PackageType.REQ_SIGN_UP, new Login(login), new Pass(passOrMessage));
+//            case "sign out":
+//                return new Package(PackageType.REQ_SIGN_OUT);
+//            case "send":
+//                return new Package(passOrMessage, new Login(login));
+//            default:
+//                throw new Exception();
+//        }
+//    }
 
     private static SSLSocketFactory getSocketFactory() throws Exception {
         KeyStore ks = KeyStore.getInstance("JKS");
@@ -110,14 +103,12 @@ public class Client {
         return sslContext.getSocketFactory();
     }
 
+    public static void main(String[] args) {
+        try {
+            Client client = new Client();
 
-
-//    public static void main(String[] args) {
-//        try {
-//            Client client = new Client();
-//            client.start();
-//        } catch (Exception exception) {
-//            exception.printStackTrace();
-//        }
-//    }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
 }

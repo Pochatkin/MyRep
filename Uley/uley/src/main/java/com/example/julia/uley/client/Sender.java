@@ -12,20 +12,18 @@ import javax.net.ssl.SSLSocket;
  */
 public class Sender {
     private OutputStream outputStream;
-    //private OutputStreamWriter outputStreamWriter;
 
-    public Sender (SSLSocket sslSocket) {
+    public Sender(SSLSocket sslSocket) {
         try {
             outputStream = sslSocket.getOutputStream();
-        }
-        catch (Exception e) {
-
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
 
     public void sendPackage(Package aPackage) throws IOException {
         byte[] serialized = aPackage.serialize();
-        //System.out.println("length of package: " + serialized.length);
+        System.out.println("length of package: " + serialized.length);
         outputStream.write(serialized, 0, serialized.length);
         outputStream.flush();
     }
