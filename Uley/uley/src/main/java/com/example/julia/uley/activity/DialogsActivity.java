@@ -27,8 +27,8 @@ import java.util.Set;
 public class DialogsActivity extends AppCompatActivity {
     public static final String APP_PREFERENCES_LOGIN = "LoginSettings";
     public static final String APP_PREFERENCES_COUNTER_LOGIN = "LoginCounter";
-    public static final String APP_PREFERENCES_LASTMESS = "MessSettings";
-    public static final String APP_PREFERENCES_COUNTER_LASTMESS = "MessCounter";
+    public static final String APP_PREFERENCES_LASTMESSAGE = "MessageSettings";
+    public static final String APP_PREFERENCES_COUNTER_LASTMESSAGE = "MessageCounter";
     private SharedPreferences mSettingsLogin;
     private SharedPreferences mSettingsLastMess;
     private Set<String> friedList;
@@ -43,7 +43,7 @@ public class DialogsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialogs_activity);
         mSettingsLogin = getSharedPreferences(APP_PREFERENCES_LOGIN, Context.MODE_PRIVATE);
-        mSettingsLastMess = getSharedPreferences(APP_PREFERENCES_LASTMESS, Context.MODE_PRIVATE);
+        mSettingsLastMess = getSharedPreferences(APP_PREFERENCES_LASTMESSAGE, Context.MODE_PRIVATE);
 
 
         // создаем адаптер
@@ -91,7 +91,7 @@ public class DialogsActivity extends AppCompatActivity {
         SharedPreferences.Editor editorLogin = mSettingsLogin.edit();
         SharedPreferences.Editor editorLastMess = mSettingsLastMess.edit();
         editorLogin.putStringSet(APP_PREFERENCES_COUNTER_LOGIN,friedList);
-        editorLastMess.putStringSet(APP_PREFERENCES_COUNTER_LASTMESS, lastMessageList);
+        editorLastMess.putStringSet(APP_PREFERENCES_COUNTER_LASTMESSAGE, lastMessageList);
         editorLogin.apply();
         editorLastMess.apply();
     }
@@ -104,8 +104,8 @@ public class DialogsActivity extends AppCompatActivity {
         if (mSettingsLogin.contains(APP_PREFERENCES_COUNTER_LOGIN)) {
             friedList = mSettingsLogin.getStringSet(APP_PREFERENCES_COUNTER_LOGIN,friedList);  // Не понятен второй параметр
         }
-        if(mSettingsLastMess.contains(APP_PREFERENCES_COUNTER_LASTMESS)){
-            lastMessageList = mSettingsLastMess.getStringSet(APP_PREFERENCES_COUNTER_LASTMESS, lastMessageList);  // Так же не ясен второй параметр
+        if(mSettingsLastMess.contains(APP_PREFERENCES_COUNTER_LASTMESSAGE)){
+            lastMessageList = mSettingsLastMess.getStringSet(APP_PREFERENCES_COUNTER_LASTMESSAGE, lastMessageList);  // Так же не ясен второй параметр
         }
     }
 

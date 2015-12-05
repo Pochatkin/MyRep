@@ -17,21 +17,20 @@ public class Listener {
     private InputStream inputStream;
     private PackageService packageService;
 
-    public Listener(SSLSocket sslSocket){
+    public Listener(SSLSocket sslSocket) {
         try {
             inputStream = sslSocket.getInputStream();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             //
         }
         packageService = new PackageService();
     }
 
-    public void start() {
-        listen();
+    public Package start() {
+        return listen();
     }
 
-    private void listen() {
+    private Package listen() {
         try {
 
             byte[] buf = new byte[BUFF_LEN];
@@ -43,7 +42,9 @@ public class Listener {
                     if ((r = inputStream.read(buf)) > 0) {
                         try {
                             Package receivedPack = Package.deserialize(buf);
-                            packageService.processPackage(receivedPack);
+                            //packageService.processPackage(receivedPack);
+                            return receivedPack;
+
                         } catch (Exception e) {
                             System.out.println("failed to deserialize");
                         }
@@ -54,6 +55,7 @@ public class Listener {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     class PackageService {

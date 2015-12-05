@@ -86,20 +86,14 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-            //TODO: Trying send Package to server
-                //Тупо переход к диалогам щас
-                //Intent intent = new Intent(SignInActivity.this, DialogsActivity.class);
-                //startActivity(intent);
+                //TODO: Trying send Package to server
                 try {
                     String email = mEmailView.getText().toString();
                     email = email.trim();
                     String password = mPasswordView.getText().toString();
-                    Login login = new Login(email);
-                    Pass pass = new Pass(password);
-                    Package signInPackage = new Package(PackageType.REQ_SIGN_IN,login,pass);
+                    Package signInPackage = new Package(PackageType.REQ_SIGN_IN, new Login(email), new Pass(password));
                     Client client = new Client();
-
-
+                    client.start(signInPackage);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

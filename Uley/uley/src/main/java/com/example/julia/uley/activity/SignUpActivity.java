@@ -11,6 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.julia.uley.R;
+import com.example.julia.uley.client.Client;
+import com.example.julia.uley.common.Login;
+import com.example.julia.uley.common.PackageType;
+import com.example.julia.uley.common.Pass;
+import com.example.julia.uley.common.Package;
 
 /**
  * Created by Михаил on 29.11.2015.
@@ -46,18 +51,18 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //TODO: Trying send Package to server ...
-//                try {
-//                    String email = mEmailView.getText().toString();
-//                    email = email.trim();
-//                    String password = mPasswordView.getText().toString();
-//                    Login login = new Login(email);
-//                    Pass pass = new Pass(password);
-//                    Package signUpPackage = new Package(PackageType.REQ_SIGN_UP, login, pass);
-//                    Client client = new Client();
-//                    client.sendPackage(signUpPackage);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
+                try {
+                    String email = mEmailView.getText().toString();
+                    email = email.trim();
+                    String password = mPasswordView.getText().toString();
+                    Login login = new Login(email);
+                    Pass pass = new Pass(password);
+                    Package signUpPackage = new Package(PackageType.REQ_SIGN_UP, login, pass);
+                    Client client = new Client();
+                    client.start(signUpPackage);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

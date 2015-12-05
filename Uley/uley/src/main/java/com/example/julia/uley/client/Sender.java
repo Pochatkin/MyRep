@@ -17,16 +17,15 @@ public class Sender {
     public Sender (SSLSocket sslSocket) {
         try {
             outputStream = sslSocket.getOutputStream();
-            //outputStreamWriter = new OutputStreamWriter(outputStream);
         }
         catch (Exception e) {
-            //
+
         }
     }
 
     public void sendPackage(Package aPackage) throws IOException {
         byte[] serialized = aPackage.serialize();
-        System.out.println("length of package: " + serialized.length);
+        //System.out.println("length of package: " + serialized.length);
         outputStream.write(serialized, 0, serialized.length);
         outputStream.flush();
     }
