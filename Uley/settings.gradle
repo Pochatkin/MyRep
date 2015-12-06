@@ -1,0 +1,3 @@
+include ':app', ':uley'
+include 'pull-to-refresh'
+project(':pull-to-refresh').projectDir = new File('uley/libs/pull-to-refresh')

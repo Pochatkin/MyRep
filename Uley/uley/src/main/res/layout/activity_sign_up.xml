@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <AutoCompleteTextView
+        android:id="@+id/email"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/prompt_email"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+    <AutoCompleteTextView
+        android:id="@+id/password"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/prompt_password"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+    <AutoCompleteTextView
+        android:id="@+id/password2"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/prompt_password_too"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+    <Button
+        style="?android:textAppearanceSmall"
+        android:id="@+id/email_sign_up_buttom"
+        android:layout_width="129dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/action_sign_up"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>
