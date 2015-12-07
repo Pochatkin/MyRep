@@ -6,7 +6,6 @@ import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.CursorLoader;
-import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
@@ -65,8 +64,8 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
-        Intent intent = new Intent(SignInActivity.this, ChatActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(SignInActivity.this, ChatActivity.class);
+//        startActivity(intent);
 
 
         setContentView(R.layout.activity_sign_in);
@@ -97,7 +96,7 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
                     String password = mPasswordView.getText().toString();
                     Package signInPackage = new Package(PackageType.REQ_SIGN_IN, new Login(email), new Pass(password));
                     Client client = new Client(context);
-                    client.start(signInPackage);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

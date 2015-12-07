@@ -16,7 +16,6 @@ import com.example.julia.uley.client.Client;
 import com.example.julia.uley.common.Login;
 import com.example.julia.uley.common.Package;
 import com.example.julia.uley.common.PackageType;
-import com.example.julia.uley.common.Pass;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -33,9 +32,8 @@ public class ChatActivity extends AppCompatActivity {
     private Set<String> postHistoryList;
     ArrayList<String> chat = new ArrayList<>();
     ChatAdapter chatAdapter;
-    //Login login = new Login(getIntent().getExtras().getString("key"));
-    Login login  = new Login("Bob");
-    private EditText messange;
+    Login login = new Login(getIntent().getExtras().getString("key"));
+    private EditText message;
 
     public static Context getContext(){
         return context;
@@ -62,28 +60,31 @@ public class ChatActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        messange = (EditText) findViewById(R.id.messageEdit);
+        message = (EditText) findViewById(R.id.messageEdit);
         Button sendMessageButton = (Button) findViewById(R.id.chatSendButton);
         sendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
                     //TODO: Send message ...
-                    String temp = messange.toString();
+                    String temp = message.toString();
                     Package aPackage = new Package(temp, new Login("T"));
-                    Package loginPackage = new Package(PackageType.REQ_SIGN_IN,new Login("M"),new Pass("123"));
-
-                    Client client = new Client();
-
-                    client.send(loginPackage);
-                    //TODO: wait RESP
-                    //client.getPackage();
-
+                    Client client = new Client(ChatActivity.this);
                     client.send(aPackage);
+                    if(client.getPackage().getType() == PackageType.RESP_MESSAGE_IN_QUEUE){
+                        //TODO: Need show message in chat and save message
+                    }
+                    if(client.getPackage().getType() == PackageType.RESP_MESSAGE_DELIVERED){
+                        //TODO: Need show message in chat
+                    }
+                    if(client.getPackage().getType() == PackageType.RESP_MESSAGE_USER_NOT_FOUND){
+                        //TODO: Push error message
+                    }
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                onPause();
             }
         });
 
@@ -131,25 +132,28 @@ public class ChatActivity extends AppCompatActivity {
 
     // генерируем данные для адаптера
     private void fillData() {
-//        onResume();
-//        String[] tempFriendList = new String[friedList.size()];
-//        String[] tempLastMessList = new String[postHistoryList.size()]; //Нужно придумать как сохранить коллекцию массивов
-//        friedList.toArray(tempFriendList);
-//        postHistoryList.toArray(tempLastMessList);
-//        if (friedList.isEmpty()) {
-//            chat = new ArrayList<>();
-//        } else {
-//            if (search(tempFriendList, login.toString()) != -1) {
-//                //Получить
-//            } else {
-//
-//            }
-//        }
-        ArrayList<String> temp = new ArrayList<>();
-        for(int i = 0; i < 20; i++){
-            temp.add(i,"kek");
+        onResume();
+        String[] tempFriendList = new String[friedList.size()];
+        String[] tempLastMessList = new String[postHistoryList.size()]; //Нужно придумать как сохранить коллекцию массивов
+        friedList.toArray(tempFriendList);
+        postHistoryList.toArray(tempLastMessList);
+        if (friedList.isEmpty()) {
+            chat = new ArrayList<>();
+            chat.add("  ");
+        } else {
+            if (search(tempFriendList, login.toString()) != -1) {
+                chat.add(tempLastMessList[search(tempFriendList,login.toString())]);
+            } else {
+                //TODO: Push error message
+            }
         }
-        chat = temp;
+
+        //Testing data
+//        ArrayList<String> temp = new ArrayList<>();
+//        for(int i = 0; i < 20; i++){
+//            temp.add(i,"kek");
+//        }
+//        chat = temp;
     }
 
 }

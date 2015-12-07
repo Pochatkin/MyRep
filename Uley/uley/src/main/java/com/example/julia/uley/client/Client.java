@@ -1,5 +1,7 @@
 package com.example.julia.uley.client;
 
+import android.content.Context;
+
 import com.example.julia.uley.common.Package;
 
 import java.io.FileInputStream;
@@ -28,11 +30,12 @@ public class Client {
     private ArrayDeque<Package> arrayDeque;
 
     private Sender sender;
+    private Context context;
 
     private SSLSocketFactory socketFactory;
     private SSLSocket sslSocket;
 
-    public Client() throws Exception {
+    public Client(Context context) throws Exception {
 
         socketFactory = getSocketFactory();
         sslSocket = (SSLSocket) socketFactory.createSocket("localhost", PORT);
@@ -40,6 +43,7 @@ public class Client {
 
         arrayDeque = new ArrayDeque<Package>();
         sender = new Sender(sslSocket);
+        this.context = context;
 
         //В отдельном потоке принимаем пакеты
         new Listener(sslSocket, arrayDeque);
@@ -103,12 +107,12 @@ public class Client {
         return sslContext.getSocketFactory();
     }
 
-    public static void main(String[] args) {
-        try {
-            Client client = new Client();
-
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-    }
+//    public static void main(String[] args) {
+//        try {
+//            Client client = new Client();
+//
+//        } catch (Exception exception) {
+//            exception.printStackTrace();
+//        }
+//    }
 }

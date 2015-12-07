@@ -1,6 +1,6 @@
 package com.example.julia.uley.activity;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -23,14 +23,12 @@ public class NewSignInActivity extends AppCompatActivity {
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private static Context context;
     private View mProgressView;
     private View mLoginFormView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        context = getApplicationContext();
         setContentView(R.layout.activity_sign_in);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -47,10 +45,16 @@ public class NewSignInActivity extends AppCompatActivity {
                     String email = mEmailView.getText().toString();
                     email = email.trim();
                     String password = mPasswordView.getText().toString();
-                    com.example.julia.uley.common.Package signInPackage = new Package(PackageType.REQ_SIGN_IN, new Login(email), new Pass(password));
-                    Client client = new Client(context);
-                    client.start(signInPackage);
-                    //TODO: Check response and going to dialog or push error
+                    Package signInPackage = new Package(PackageType.REQ_SIGN_IN, new Login(email), new Pass(password));
+                    Client client = new Client(NewSignInActivity.this);
+                    client.send(signInPackage);
+                    if(client.getPackage().getType() == PackageType.RESP_SIGN_IN_OK){
+                        Intent intent = new Intent(NewSignInActivity.this, DialogsActivity.class);
+                        startActivity(intent);
+                    }
+                    if(client.getPackage().getType() == PackageType.RESP_SIGN_IN_FAILED){
+                        //TODO: Push error message
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
