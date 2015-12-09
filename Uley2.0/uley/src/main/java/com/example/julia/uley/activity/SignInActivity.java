@@ -27,7 +27,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.julia.uley.R;
-import com.example.julia.uley.client.Client;
 import com.example.julia.uley.common.Login;
 import com.example.julia.uley.common.Package;
 import com.example.julia.uley.common.PackageType;
@@ -64,7 +63,6 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = getApplicationContext();
         Intent intent = new Intent(SignInActivity.this, ChatActivity.class);
         startActivity(intent);
 
@@ -96,7 +94,7 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
                     email = email.trim();
                     String password = mPasswordView.getText().toString();
                     Package signInPackage = new Package(PackageType.REQ_SIGN_IN, new Login(email), new Pass(password));
-                    Client client = new Client(context);
+                   // Client client = new Client(context);
                     //client.start(signInPackage);
                 } catch (Exception e) {
                     e.printStackTrace();

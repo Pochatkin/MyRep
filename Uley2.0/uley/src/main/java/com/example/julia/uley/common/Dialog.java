@@ -11,9 +11,13 @@ public class Dialog {
         this(null,null);
     }
 
-    public Dialog (Login _login, String _lastMessage){
-        login = _login;
-        lastMessage = _lastMessage;
+    public Dialog (Login login, String lastMessage){
+        this.login = login;
+        this.lastMessage = lastMessage;
+    }
+
+    public Login getLogin() {
+        return login;
     }
 
     public String getLastMessage() {

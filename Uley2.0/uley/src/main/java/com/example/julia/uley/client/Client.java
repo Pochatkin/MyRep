@@ -5,14 +5,8 @@ import android.content.res.AssetManager;
 
 import com.example.julia.uley.common.Package;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.security.KeyStore;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
@@ -27,9 +21,7 @@ import javax.net.ssl.TrustManagerFactory;
 /**
  * Created by Сергей on 20.11.2015.
  */
-public class Client implements Serializable {
-    private static String tsName = "src/res/client_key_store.jks";
-    private static String ServerCrtName = "src/res/server_bks.cer";
+public class Client {
     private static final int TIMEOUT = 500;
     private static final int PORT = 3128;
 
@@ -37,50 +29,52 @@ public class Client implements Serializable {
     private ArrayDeque<Package> arrayDequeReq;
 
     private Sender sender;
-    private static Context context;
+    private static Client ourInstance = new Client();
+    private boolean inited;
+    private Context context;
 
     private SSLSocketFactory socketFactory;
     private SSLSocket sslSocket;
 
+    public static Client getInstance() {
+        return ourInstance;
+    }
 
-    public Client(Context context) throws Exception {
-        this.context = context;
-        socketFactory = getSocketFactory();
+//Здесь был контекст!!
+    private Client() {
 
+    }
 
-        sslSocket = (SSLSocket) socketFactory.createSocket("92.42.31.144", PORT);
-        sslSocket.setSoTimeout(TIMEOUT); //ждем ответа TIMEOUT миллисек
-        //не тестили
-        arrayDequeResp = new ArrayDeque<Package>();
-        arrayDequeReq = new ArrayDeque<Package>();
-        //не тестили
-        new Listener(sslSocket, arrayDequeResp, arrayDequeReq);
-        sender = new Sender(sslSocket);
-
+    public void init(Context context) {
+        if (inited) return;
+        try {
+            this.context = context;
+            socketFactory = getSocketFactory();
+            sslSocket = (SSLSocket) socketFactory.createSocket("172.20.205.136", PORT);
+            sslSocket.setSoTimeout(TIMEOUT); //ждем ответа TIMEOUT миллисек
+            //не тестили
+            arrayDequeResp = new ArrayDeque<Package>();
+            arrayDequeReq = new ArrayDeque<Package>();
+            //не тестили
+            new Listener(sslSocket, arrayDequeResp, arrayDequeReq);
+            sender = new Sender(sslSocket);
+            inited = true;
+        } catch (Exception e) {
+            System.out.println("failed to init client");
+            e.printStackTrace();
+        }
     }
 
     public void send(Package aPackage) throws Exception {
+        if (!inited) throw new RuntimeException("cant send --- not inited");
+        System.out.println("sender null: " + (sender == null));
         sender.sendPackage(aPackage);
     }
 
-    public byte[] serialize() throws IOException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream(5 * 1024);
-        try (ObjectOutputStream oos = new ObjectOutputStream(baos)) {
-            oos.writeObject(this);
-        }
-        return baos.toByteArray();
-    }
-
-    public static Client deserialize(byte[] data) throws Exception {
-        Client client;
-        try (ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data))) {
-            client = (Client) ois.readObject();
-        }
-        return client;
-    }
 
     //не тестили
     public Package getPackageResp() {
+        if (!inited) throw new RuntimeException("cant getresp --- not inited");
         if (arrayDequeResp.isEmpty()) return null;
 
         Package pack = arrayDequeResp.getFirst();
@@ -90,6 +84,7 @@ public class Client implements Serializable {
 
     //не тестили
     public Package getPackageReq() {
+        if (!inited) throw new RuntimeException("cant getreq --- not inited");
         if (arrayDequeReq.isEmpty()) return null;
 
         Package pack = arrayDequeReq.getFirst();
@@ -97,7 +92,7 @@ public class Client implements Serializable {
         return pack;
     }
 
-    private static SSLSocketFactory getSocketFactory() throws Exception {
+    private SSLSocketFactory getSocketFactory() throws Exception {
         KeyStore ks = KeyStore.getInstance("BKS");
         AssetManager am = context.getAssets();
         try {
@@ -125,6 +120,7 @@ public class Client implements Serializable {
 //        sslContext.init(null, null, null);
         return sslContext.getSocketFactory();
     }
+
 
 //    public static void main(String[] args) {
 //        try {

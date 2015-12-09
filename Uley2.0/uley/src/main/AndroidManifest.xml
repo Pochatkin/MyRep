@@ -16,18 +16,26 @@
         <activity
             android:name=".activity.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name"></activity>
-
-        <activity android:name=".activity.NewSignInActivity">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+        </activity>
+
+        <activity android:name=".activity.NewSignInActivity">
+
+
 
         </activity>
+
+
         <activity android:name=".activity.DialogsActivity">
+
+
+
 
 
         </activity>
@@ -41,6 +49,10 @@
         <activity
             android:name=".activity.ChatActivity"
             android:parentActivityName=".activity.DialogsActivity">
+
+
+            android:stackFromBottom="true"
+            android:transcriptMode="alwaysScroll"
 
         </activity>
 

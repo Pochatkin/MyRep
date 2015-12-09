@@ -20,11 +20,11 @@ public class DialogsAdapter extends BaseAdapter {
 
     Context ctx;
     LayoutInflater lInflater;
-    ArrayList<Dialog> objects;
+    ArrayList<Dialog> dialogs;
 
     public DialogsAdapter(Context context, ArrayList<Dialog> dialogs) {
         ctx = context;
-        objects = dialogs;
+        this.dialogs = dialogs;
         lInflater = (LayoutInflater) ctx
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -32,12 +32,13 @@ public class DialogsAdapter extends BaseAdapter {
     // кол-во элементов
     @Override
     public int getCount() {
-        return objects.size();
+        return dialogs.size();
     }
+
     // элемент по позиции
     @Override
     public Object getItem(int position) {
-        return objects.get(position);
+        return dialogs.get(position);
     }
 
     // id по позиции
@@ -54,16 +55,21 @@ public class DialogsAdapter extends BaseAdapter {
         if (view == null) {
             view = lInflater.inflate(R.layout.list_item_room, parent, false);
         }
+        if (dialogs != null) {
+            if (dialogs.size() != 0) {
+                String lastMessage = getDialog(position).getLastMessage();
+                Login login = getDialog(position).getLogin();
 
-        Dialog d = getDialog(position);
-        Login Bob = new Login("Bob");
+                // заполняем View в пункте списка данными из товаров: наименование, цена
+                // и картинка
+                ((TextView) view.findViewById(R.id.roomName)).setText(login.toString());
+                ((TextView) view.findViewById(R.id.lastMessage)).setText(lastMessage.toString());
 
-        // заполняем View в пункте списка данными из товаров: наименование, цена
-        // и картинка
-        ((TextView) view.findViewById(R.id.roomName)).setText(Bob.toString());
-        ((TextView) view.findViewById(R.id.lastMessage)).setText(d.getLastMessage());
+            }
+        }
         return view;
     }
+
 
     // товар по позиции
     public Dialog getDialog(int position) {

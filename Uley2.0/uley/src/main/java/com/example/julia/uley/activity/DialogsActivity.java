@@ -36,6 +36,7 @@ public class DialogsActivity extends AppCompatActivity {
     private Set<String> lastMessageList;
     private Client client;
 
+
     ArrayList<Dialog> dialogs = new ArrayList<Dialog>();
     DialogsAdapter dialogAdapter;
 
@@ -44,15 +45,10 @@ public class DialogsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialogs_activity);
-        try {
-            client = (Client) getIntent().getSerializableExtra("client");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         mSettingsLogin = getSharedPreferences(APP_PREFERENCES_LOGIN, Context.MODE_PRIVATE);
         mSettingsLastMess = getSharedPreferences(APP_PREFERENCES_LASTMESSAGE, Context.MODE_PRIVATE);
 
-
+        client = Client.getInstance();
         // создаем адаптер
         fillData();
         dialogAdapter = new DialogsAdapter(this, dialogs);
@@ -65,51 +61,107 @@ public class DialogsActivity extends AppCompatActivity {
                                     int position, long id) {
                 Intent intent = new Intent(DialogsActivity.this, ChatActivity.class);
                 //TODO: MUST BE REPLACE, second parameter
-                intent.putExtra("key", position);
-                intent.putExtra("client", client);
+                intent.putExtra("senderLogin", dialogs.get(position).getLogin());
                 startActivity(intent);
             }
         });
-
         onPause();
+    }
+
+
+    @Override
+    public void onBackPressed() {
     }
 
     // генерируем данные для адаптера
     private void fillData() {
-//        onResume();
-//        String[] tempFriendList = new String[friendList.size()];
-//        String[] tempLastMessList = new String[lastMessageList.size()];
-//        friendList.toArray(tempFriendList);
-//        lastMessageList.toArray(tempLastMessList);
-//        if (friendList.isEmpty()) {
-//            dialogs = new ArrayList<>();
-//        } else {
-//            for (int i = 0; i < friendList.size(); i++) {
-//                Login tempLogin = new Login(tempFriendList[i]);
-//                Dialog tempDialog = new Dialog(tempLogin, tempLastMessList[i]);
-//                dialogs.add(i, tempDialog);
-//            }
+        onResume();
+        try {
+            if (!getIntent().getExtras().getString("SearcherUser").equals(null)) {
+                if (sizeLastMessageList() != 0 && sizeFriendList() != 0) {
+                    String[] tempFriendList = new String[sizeFriendList() + 1];
+                    String[] tempLastMessList = new String[sizeLastMessageList() + 1];
+                    friendList.toArray(tempFriendList);
+                    lastMessageList.toArray(tempLastMessList);
+                    tempFriendList[sizeFriendList()] = getIntent().getExtras().getString("SearcherUser");
+                    tempLastMessList[sizeLastMessageList()] = null;
+                    if (friendList.isEmpty()) {
+                        dialogs = new ArrayList<>();
+                    } else {
+                        for (int i = 0; i < friendList.size(); i++) {
+                            Login tempLogin = new Login(tempFriendList[i]);
+                            Dialog tempDialog = new Dialog(tempLogin, tempLastMessList[i]);
+                            dialogs.add(i, tempDialog);
+                        }
+                    }
+
+                } else {
+                    dialogs = new ArrayList<>();
+                }
+            } else {
+                if (sizeLastMessageList() != 0 && sizeFriendList() != 0) {
+                    String[] tempFriendList = new String[sizeFriendList()];
+                    String[] tempLastMessList = new String[sizeLastMessageList()];
+                    friendList.toArray(tempFriendList);
+                    lastMessageList.toArray(tempLastMessList);
+                    if (friendList.isEmpty()) {
+                        dialogs = new ArrayList<>();
+                    } else {
+                        for (int i = 0; i < friendList.size(); i++) {
+                            Login tempLogin = new Login(tempFriendList[i]);
+                            Dialog tempDialog = new Dialog(tempLogin, tempLastMessList[i]);
+                            dialogs.add(i, tempDialog);
+                        }
+                    }
+
+                } else {
+                    dialogs = new ArrayList<>();
+                }
+            }
+        } catch (Exception e) {
+            if (sizeLastMessageList() != 0 && sizeFriendList() != 0) {
+                String[] tempFriendList = new String[sizeFriendList()];
+                String[] tempLastMessList = new String[sizeLastMessageList()];
+                friendList.toArray(tempFriendList);
+                lastMessageList.toArray(tempLastMessList);
+                if (friendList.isEmpty()) {
+                    dialogs = new ArrayList<>();
+                } else {
+                    for (int i = 0; i < friendList.size(); i++) {
+                        Login tempLogin = new Login(tempFriendList[i]);
+                        Dialog tempDialog = new Dialog(tempLogin, tempLastMessList[i]);
+                        dialogs.add(i, tempDialog);
+                    }
+                }
+
+            } else {
+                dialogs = new ArrayList<>();
+            }
+        }
+//        dialogs = new ArrayList<>();
+//        Dialog tempDialog = new Dialog();
+//        String tempString;
+//        for(int i = 0; i < 10; i++){
+//            tempString = "Login" + i;
+//            tempDialog = new Dialog(new Login(tempString), "kek");
+//            dialogs.add(i,tempDialog);
 //        }
-        dialogs = new ArrayList<>();
-        Dialog tempDialog = new Dialog();
-        String tempString;
-        for(int i = 0; i < 10; i++){
-            tempString = "Login" + i;
-            tempDialog = new Dialog(new Login(tempString), "kek");
-            dialogs.add(i,tempDialog);
+    }
+
+    private Integer sizeFriendList() {
+        try {
+            return friendList.size();
+        } catch (NullPointerException e) {
+            return 0;
         }
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        // Запоминаем данные
-        SharedPreferences.Editor editorLogin = mSettingsLogin.edit();
-        SharedPreferences.Editor editorLastMess = mSettingsLastMess.edit();
-        editorLogin.putStringSet(APP_PREFERENCES_COUNTER_LOGIN, friendList);
-        editorLastMess.putStringSet(APP_PREFERENCES_COUNTER_LASTMESSAGE, lastMessageList);
-        editorLogin.apply();
-        editorLastMess.apply();
+    private Integer sizeLastMessageList() {
+        try {
+            return lastMessageList.size();
+        } catch (NullPointerException e) {
+            return 0;
+        }
     }
 
     @Override
@@ -125,10 +177,24 @@ public class DialogsActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Запоминаем данные
+        SharedPreferences.Editor editorLogin = mSettingsLogin.edit();
+        SharedPreferences.Editor editorLastMess = mSettingsLastMess.edit();
+        editorLogin.putStringSet(APP_PREFERENCES_COUNTER_LOGIN, friendList);
+        editorLastMess.putStringSet(APP_PREFERENCES_COUNTER_LASTMESSAGE, lastMessageList);
+        editorLogin.apply();
+        editorLastMess.apply();
+    }
+
+
     public void ConfirmSignOut() {
         DialogFragment newFragment = new SignOutDialogFragment();
         newFragment.show(getSupportFragmentManager(), "missiles");
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

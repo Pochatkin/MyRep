@@ -38,7 +38,7 @@ public class Login implements Serializable {
         if (obj instanceof Login) {
             return Objects.equals(login, ((Login) obj).login);
         }
-        return false;
+        return login.equals(obj);
     }
 
 

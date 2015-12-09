@@ -34,28 +34,12 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = getApplicationContext();
-        try {
-            client = new Client(SignUpActivity.this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         setContentView(R.layout.activity_sign_up);
 
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordTooView = (EditText) findViewById(R.id.password2);
-       /* mPasswordTooView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) { // поменять параметры мб.
-                    //вывести ошибку
-                    return true;
-                }
-                //TODO: Need to compare password and passwordToo ...
-                return false;
-            }
-        });*/
+
         SignUpButton = (Button) findViewById(R.id.email_sign_up_button);
         SignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute(){
+            super.onPreExecute();
             SignUpButton.setVisibility(View.INVISIBLE);
         }
 
@@ -100,7 +85,8 @@ public class SignUpActivity extends AppCompatActivity {
             try {
                 //TODO: CHECK
                 Package signUpPackage = params[0];
-                Client client = new Client(context);
+                client = Client.getInstance();
+                client.init(SignUpActivity.this);
                 client.send(signUpPackage);
                 ListenerManager listenerManager = new ListenerManager(client);
                 tempPackage = listenerManager.listenerManager();
@@ -114,22 +100,21 @@ public class SignUpActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Package result) {
             View focusView = null;
-            if (client.getPackageResp().getType() == PackageType.RESP_SIGN_UP_USER_ALREADY_EXIST) {
+            if (result.getType() == PackageType.RESP_SIGN_UP_USER_ALREADY_EXIST) {
                 mEmailView.setError(getString(R.string.error_user_already_exist));
                 focusView = mEmailView;
                 focusView.requestFocus();
                 SignUpButton.setVisibility(View.VISIBLE);
             }
-            if (client.getPackageResp().getType() == PackageType.RESP_SIGN_UP_PASS_FILTER_FAILED ||
-                    client.getPackageResp().getType() == PackageType.RESP_SIGN_UP_LOGIN_FILTER_FAILED) {
+            if (result.getType() == PackageType.RESP_SIGN_UP_PASS_FILTER_FAILED ||
+                    result.getType() == PackageType.RESP_SIGN_UP_LOGIN_FILTER_FAILED) {
                 mEmailView.setError(getString(R.string.error_log_pass_filter));
                 focusView = mEmailView;
                 focusView.requestFocus();
                 SignUpButton.setVisibility(View.VISIBLE);
             }
-            if (client.getPackageResp().getType() == PackageType.RESP_SIGN_UP_OK) {
+            if (result.getType() == PackageType.RESP_SIGN_UP_OK) {
                 Intent intent = new Intent(SignUpActivity.this, DialogsActivity.class);
-                intent.putExtra("client", client);
                 SignUpButton.setVisibility(View.VISIBLE);
 //                startActivity(intent);
                 System.out.println("ok!");
