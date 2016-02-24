@@ -16,3 +16,6 @@ C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Adams\obj\Debug\Adams.pdb
 C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Adams\bin\Debug\Adams.exe
 C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Adams\bin\Debug\Adams.pdb
 C:\Users\Михаил\Dropbox\Выч.Мат\2 курс\Adams\obj\Debug\Adams.csprojResolveAssemblyReference.cache
+C:\Users\Михаил\GitHub\MyRep\ComputationalMethods\2 курс\Adams\bin\Debug\Adams.exe.config
+C:\Users\Михаил\GitHub\MyRep\ComputationalMethods\2 курс\Adams\obj\Debug\Adams.exe
+C:\Users\Михаил\GitHub\MyRep\ComputationalMethods\2 курс\Adams\obj\Debug\Adams.pdb

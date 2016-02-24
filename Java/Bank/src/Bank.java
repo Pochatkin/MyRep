@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Created by Михаил on 10.09.2015.
+ * Created by пїЅпїЅпїЅпїЅпїЅпїЅ on 10.09.2015.
  */
 
 
@@ -21,7 +21,7 @@ public class Bank {
             try {
                 x.add(str.nextInt());
             } catch (Exception e) {
-                System.out.println("Неверный символ");
+                System.out.println("Exception smth");
                 return;
             }
 
