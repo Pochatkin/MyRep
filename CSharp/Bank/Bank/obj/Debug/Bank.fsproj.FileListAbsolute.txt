@@ -1,0 +1,9 @@
+c:\users\михаил\documents\visual studio 2015\Projects\Bank\Bank\bin\Debug\Bank.exe.config
+c:\users\михаил\documents\visual studio 2015\Projects\Bank\Bank\bin\Debug\Bank.XML
+c:\users\михаил\documents\visual studio 2015\Projects\Bank\Bank\bin\Debug\Bank.exe
+c:\users\михаил\documents\visual studio 2015\Projects\Bank\Bank\bin\Debug\Bank.pdb
+c:\users\михаил\documents\visual studio 2015\Projects\Bank\Bank\bin\Debug\FSharp.Core.dll
+c:\users\михаил\documents\visual studio 2015\Projects\Bank\Bank\bin\Debug\FSharp.Core.xml
+c:\users\михаил\documents\visual studio 2015\Projects\Bank\Bank\bin\Debug\ru\FSharp.Core.resources.dll
+c:\users\михаил\documents\visual studio 2015\Projects\Bank\Bank\obj\Debug\Bank.exe
+c:\users\михаил\documents\visual studio 2015\Projects\Bank\Bank\obj\Debug\Bank.pdb

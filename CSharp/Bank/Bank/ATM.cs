@@ -23,7 +23,7 @@ namespace Bank
 				x[0]++;
 				if (summ(ratigs, x) == sum)
 				{
-					temp.Add(x);
+					temp.Add((int[])x.Clone());
 				}
 				for (int i = 0; summ(ratigs, x) > sum; i++)
 				{
