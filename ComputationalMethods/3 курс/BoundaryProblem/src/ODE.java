@@ -1,5 +1,5 @@
 /**
- * Created by Михаил on 15.12.2015.
+ * Created by пїЅпїЅпїЅпїЅпїЅпїЅ on 15.12.2015.
  */
 public class ODE {
     Function function = new Function();
@@ -18,9 +18,7 @@ public class ODE {
     private double[] t = new double[n + 1];
     private double[] y = new double[n + 1];
 
-    public ODE(){
 
-    }
 
     public void start(){
         setX();
