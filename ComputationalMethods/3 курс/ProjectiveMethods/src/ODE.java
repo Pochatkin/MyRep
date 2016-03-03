@@ -3,47 +3,54 @@
  */
 public class ODE {
 
-    public static final int a1 = 1;
-    public static final int a2 = 0;
-    public static final int b1 = 2;
-    public static final int b2 = 3;
 
-    int u;
-    int v;
-    int w;
-    int f;
 
-    public void setU(int u) {
+    public static final int a1 = 0;
+    public static final int a2 = -1;
+    public static final int b1 = 3;
+    public static final int b2 = 2;
+
+    double u;
+    double v;
+    double w;
+    double f;
+    public void ODE(double u,double v,double w,double f){
         this.u = u;
-    }
-
-    public void setV(int v) {
         this.v = v;
-    }
-
-    public void setW(int w) {
         this.w = w;
-    }
-
-    public void setF(int f) {
         this.f = f;
     }
 
-    public int getU() {
-        return u;
-    }
-
-    public int getV() {
-        return v;
-    }
-
-    public int getW() {
-        return w;
-    }
-
-    public int getF() {
+    public double getF() {
         return f;
     }
 
+    public double getU() {
+        return u;
+    }
 
+    public double getV() {
+        return v;
+    }
+
+    public double getW() {
+        return w;
+    }
+
+    public void setF(double f) {
+        this.f = f;
+    }
+
+    public void setU(double u) {
+        this.u = u;
+    }
+
+    public void setV(double v) {
+        this.v = v;
+    }
+
+    public void setW(double w) {
+        this.w = w;
+    }
 }
+
