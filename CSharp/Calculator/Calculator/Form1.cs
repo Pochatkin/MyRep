@@ -163,6 +163,7 @@ namespace Calculator
 				{
 					buff = doSmth(buff).ToString();
 					buff += "+";
+					smth = true;
 				}
 				else
 				{
@@ -181,6 +182,7 @@ namespace Calculator
 				{
 					buff = doSmth(buff).ToString();
 					buff += "-";
+					smth = true;
 				}
 				else
 				{
@@ -200,6 +202,7 @@ namespace Calculator
 				{
 					buff = doSmth(buff).ToString();
 					buff += "*";
+					smth = true;
 				}
 				else
 				{
@@ -219,6 +222,7 @@ namespace Calculator
 				{
 					buff = doSmth(buff).ToString();
 					buff += "/";
+					smth = true;
 				}
 				else
 				{
@@ -235,11 +239,6 @@ namespace Calculator
 			textBox3.Text = buff;
 		}
 
-		private void Form1_Load(object sender, EventArgs e)
-		{
-
-		}
-
 		private void button15_Click(object sender, EventArgs e)
 		{
 			textBox3.Clear();
@@ -250,6 +249,10 @@ namespace Calculator
 		private void textBox3_TextChanged(object sender, EventArgs e)
 		{
 			
+		}
+		private void Form1_Load(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
