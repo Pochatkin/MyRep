@@ -18,8 +18,8 @@ namespace Calculator
 			InitializeComponent();
 		}
 
-		int n;
-		string buff = "";
+	
+		string buff = "0";
 		bool smth = false;
 
 		private bool isFull(string s)
@@ -241,8 +241,7 @@ namespace Calculator
 
 		private void button15_Click(object sender, EventArgs e)
 		{
-			textBox3.Clear();
-			buff = "";
+			buff = "0";
 			textBox3.Text = buff;
 		}
 
@@ -252,6 +251,45 @@ namespace Calculator
 		}
 		private void Form1_Load(object sender, EventArgs e)
 		{
+
+		}
+
+		private void button17_Click(object sender, EventArgs e)
+		{
+			for (int i = buff.Length - 1; i > 0; i--)
+			{
+				if (buff[i] == '/')
+				{
+					buff.Insert(i, "-");
+					break;
+				}
+				if (buff[i] == '*')
+				{
+					buff.Insert(i, "-");
+					break;
+				}
+				if (buff[i] == '+')
+				{
+					buff.Insert(i, "-");
+					break;
+				}
+				if (buff[i] == '-')
+				{
+					buff.Insert(i, "-");	
+					break;
+				}
+			}
+			textBox3.Text = buff;
+		}
+
+		private void button19_Click(object sender, EventArgs e)
+		{
+			buff += ")";
+		}
+
+		private void button18_Click(object sender, EventArgs e)
+		{
+			buff += "(";
 
 		}
 	}
