@@ -38,6 +38,8 @@ namespace Calculator
 					pos += s.Length;
 				}
 			}
+
+
 			private byte GetPriority(string s)
 			{
 				switch (s)
@@ -57,6 +59,7 @@ namespace Calculator
 						return 4;
 				}
 			}
+
 
 			public string[] ConvertToPostfixNotation(string input)
 			{
@@ -98,6 +101,8 @@ namespace Calculator
 
 				return outputSeparated.ToArray();
 			}
+
+
 			public decimal result(string input)
 			{
 				Stack<string> stack = new Stack<string>();
@@ -113,10 +118,7 @@ namespace Calculator
 					else
 					{
 						decimal summ = 0;
-						try
-						{
-
-							switch (str)
+						switch (str)
 							{
 
 								case "+":
@@ -155,11 +157,8 @@ namespace Calculator
 										break;
 									}
 							}
-						}
-						catch (Exception ex)
-						{
-							//MessageBox.Show(ex.Message);
-						}
+						
+			
 						stack.Push(summ.ToString());
 						if (queue.Count > 0)
 							str = queue.Dequeue();

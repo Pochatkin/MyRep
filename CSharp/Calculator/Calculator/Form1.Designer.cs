@@ -197,7 +197,6 @@
 			this.textBox3.ReadOnly = true;
 			this.textBox3.Size = new System.Drawing.Size(307, 20);
 			this.textBox3.TabIndex = 17;
-			//this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
 			// 
 			// button15
 			// 
@@ -276,7 +275,6 @@
 			this.Controls.Add(this.button1);
 			this.Name = "Form1";
 			this.Text = "Form1";
-			//this.Load += new System.EventHandler(this.Form1_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
