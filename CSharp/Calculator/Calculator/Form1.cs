@@ -13,7 +13,7 @@ namespace Calculator
 	public partial class Form1 : Form
 	{
 
-		private List<string> operators;
+		
 		private List<string> standart_operators =
 				new List<string>(new string[] { "(", ")", "+", "-", "*", "/", "^" });
 		int n = 0;
@@ -25,8 +25,10 @@ namespace Calculator
 			InitializeComponent();
 		}
 
+
 		public decimal result(string input)
 		{
+			List<string> operators = new List<string>(standart_operators);
 			Stack<string> stack = new Stack<string>();
 			Queue<string> queue = new Queue<string>(ConvertToPostfixNotation(input));
 			string str = queue.Dequeue();
@@ -34,8 +36,18 @@ namespace Calculator
 			{
 				if (!operators.Contains(str))
 				{
-					stack.Push(str);
-					str = queue.Dequeue();
+					try
+					{
+						stack.Push(str);
+						str = queue.Dequeue();
+					}
+					catch 
+					{
+						stack.Clear();
+						stack.Push("0");
+						break;
+						
+					}
 				}
 				else
 				{
@@ -45,38 +57,59 @@ namespace Calculator
 
 						case "+":
 							{
-								decimal a = Convert.ToDecimal(stack.Pop());
-								decimal b = Convert.ToDecimal(stack.Pop());
-								summ = a + b;
-								break;
+								try 
+								{
+									decimal a = Convert.ToDecimal(stack.Pop());
+									decimal b = Convert.ToDecimal(stack.Pop());
+									summ = a + b;
+									break;
+								}
+								catch { break; }
 							}
 						case "-":
 							{
-								decimal a = Convert.ToDecimal(stack.Pop());
-								decimal b = Convert.ToDecimal(stack.Pop());
-								summ = b - a;
-								break;
+								try
+								{
+									decimal a = Convert.ToDecimal(stack.Pop());
+									decimal b = Convert.ToDecimal(stack.Pop());
+									summ = b - a;
+									break;
+								}
+								catch { break; }
 							}
 						case "*":
 							{
-								decimal a = Convert.ToDecimal(stack.Pop());
-								decimal b = Convert.ToDecimal(stack.Pop());
-								summ = b * a;
-								break;
+								try
+								{
+									decimal a = Convert.ToDecimal(stack.Pop());
+									decimal b = Convert.ToDecimal(stack.Pop());
+									summ = a * b;
+									break;
+								}
+								catch { break; }
 							}
 						case "/":
 							{
-								decimal a = Convert.ToDecimal(stack.Pop());
-								decimal b = Convert.ToDecimal(stack.Pop());
-								summ = b / a;
-								break;
+								try
+								{
+									decimal a = Convert.ToDecimal(stack.Pop());
+									decimal b = Convert.ToDecimal(stack.Pop());
+									summ = a / b;
+									break;
+								}
+								catch { break; }
 							}
 						case "^":
 							{
-								decimal a = Convert.ToDecimal(stack.Pop());
-								decimal b = Convert.ToDecimal(stack.Pop());
-								summ = Convert.ToDecimal(Math.Pow(Convert.ToDouble(b), Convert.ToDouble(a)));
-								break;
+								try
+								{
+									decimal a = Convert.ToDecimal(stack.Pop());
+									decimal b = Convert.ToDecimal(stack.Pop());
+									summ = Convert.ToDecimal(Math.Pow(Convert.ToDouble(b), Convert.ToDouble(a)));
+									break;
+								}
+								catch { break; }
+			
 							}
 					}
 
@@ -114,6 +147,7 @@ namespace Calculator
 
 		public string[] ConvertToPostfixNotation(string input)
 		{
+			List<string> operators = new List<string>(standart_operators);
 			List<string> outputSeparated = new List<string>();
 			Stack<string> stack = new Stack<string>();
 			foreach (string c in Separate(input))
@@ -439,24 +473,25 @@ namespace Calculator
 		{
 			if (!isFull(buff))
 			{
-				if (n == 0)
-				{
-					if (smth)
-					{
-						buff = doSmth(buff).ToString();
-						buff += "+";
-						smth = true;
-					}
-					else
-					{
-						buff += "+";
-						smth = true;
-					}
-				}
-				else
-				{
-					buff += "+";
-				}
+				//if (n == 0)
+				//{
+				//	if (smth)
+				//	{
+				//		buff = doSmth(buff).ToString();
+				//		buff += "+";
+				//		smth = true;
+				//	}
+				//	else
+				//	{
+				//		buff += "+";
+				//		smth = true;
+				//	}
+				//}
+				//else
+				//{
+				//	buff += "+";
+				//}
+				buff += "+";
 			}
 			textBox3.Text = buff;
 		}
@@ -465,25 +500,26 @@ namespace Calculator
 		{
 			if (!isFull(buff))
 			{
-				if (n == 0)
-				{
+				//if (n == 0)
+				//{
 
-					if (smth)
-					{
-						buff = doSmth(buff).ToString();
-						buff += "-";
-						smth = true;
-					}
-					else
-					{
-						buff += "-";
-						smth = true;
-					}
-				}
-				else
-				{
-					buff += "-";
-				}
+				//	if (smth)
+				//	{
+				//		buff = doSmth(buff).ToString();
+				//		buff += "-";
+				//		smth = true;
+				//	}
+				//	else
+				//	{
+				//		buff += "-";
+				//		smth = true;
+				//	}
+				//}
+				//else
+				//{
+				//	buff += "-";
+				//}
+				buff += "-";
 			}
 			textBox3.Text = buff;
 
@@ -493,25 +529,26 @@ namespace Calculator
 		{
 			if (!isFull(buff))
 			{
-				if (n == 0)
-				{
+				//if (n == 0)
+				//{
 
-					if (smth)
-					{
-						buff = doSmth(buff).ToString();
-						buff += "*";
-						smth = true;
-					}
-					else
-					{
-						buff += "*";
-						smth = true;
-					}
-				}
-				else
-				{
-					buff += "*";
-				}
+				//	if (smth)
+				//	{
+				//		buff = doSmth(buff).ToString();
+				//		buff += "*";
+				//		smth = true;
+				//	}
+				//	else
+				//	{
+				//		buff += "*";
+				//		smth = true;
+				//	}
+				//}
+				//else
+				//{
+				//	buff += "*";
+				//}
+				buff += "*";
 			}
 			textBox3.Text = buff;
 
@@ -521,31 +558,32 @@ namespace Calculator
 		{
 			if (!isFull(buff))
 			{
-				if (n == 0)
-				{
-					if (smth)
-					{
-						buff = doSmth(buff).ToString();
-						buff += "/";
-						smth = true;
-					}
-					else
-					{
-						buff += "/";
-						smth = true;
-					}
-				}
-				else
-				{
-					buff += "/";
-				}
+				//if (n == 0)
+				//{
+				//	if (smth)
+				//	{
+				//		buff = doSmth(buff).ToString();
+				//		buff += "/";
+				//		smth = true;
+				//	}
+				//	else
+				//	{
+				//		buff += "/";
+				//		smth = true;
+				//	}
+				//}
+				//else
+				//{
+				//	buff += "/";
+				//}
+				buff += "/";
 			}
 			textBox3.Text = buff;
 		}
 
 		private void button13_Click(object sender, EventArgs e)
 		{
-			buff = doSmth(buff);
+			buff = result(buff).ToString();
 			textBox3.Text = buff;
 		}
 
