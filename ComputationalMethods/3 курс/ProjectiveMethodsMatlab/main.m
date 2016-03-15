@@ -2,20 +2,17 @@ function y = main(n)
 
 for p=1:1:n
     for r=1:1:n
-        temp = Scalar(p,r);
-        a(p,r) = temp;
+        a(r,p) = Scalar(r,p);
     end
 end
 
 
 for p=1:1:n
-   temp = Scalarf(p);
-   b(p) = temp;
+   b(p) = Scalarf(p);
 end
 
-c = b';
 
-y = a\c;
+y = a;
 
 
 
