@@ -15,10 +15,13 @@ namespace Calculator
 
 		
 		private List<string> standart_operators =
-				new List<string>(new string[] { "(", ")", "+", "-", "*", "/", "^" });
-		int n = 0;
+				new List<string>(new string[] { "(", ")", "+", "-", "*", "/", "^", "@" });
+
+		private List<string> standart_number =
+				new List<string>(new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+		//int n = 0;
 		string buff = "0";
-		bool smth = false;
+		//bool smth = false;
 
 		public Form1()
 		{
@@ -28,6 +31,8 @@ namespace Calculator
 
 		public decimal result(string input)
 		{
+			input = correction(input);
+			input = toUnarMinus(input);
 			List<string> operators = new List<string>(standart_operators);
 			Stack<string> stack = new Stack<string>();
 			Queue<string> queue = new Queue<string>(ConvertToPostfixNotation(input));
@@ -44,7 +49,7 @@ namespace Calculator
 					catch 
 					{
 						stack.Clear();
-						stack.Push("0");
+						stack.Push("Unparsable");
 						break;
 						
 					}
@@ -111,6 +116,18 @@ namespace Calculator
 								catch { break; }
 			
 							}
+						case "@":
+							{
+								try
+								{
+									decimal a = Convert.ToDecimal(stack.Pop());
+									summ = -a;
+									break;
+								}
+								catch {
+									break;
+								}
+							}
 					}
 
 
@@ -140,8 +157,10 @@ namespace Calculator
 					return 2;
 				case "^":
 					return 3;
-				default:
+				case "@":
 					return 4;
+				default:
+					return 5;
 			}
 		}
 
@@ -159,7 +178,7 @@ namespace Calculator
 						if (c.Equals(")"))
 						{
 							string s = stack.Pop();
-							while (s != "(")
+							while (!s.Equals("("))
 							{
 								outputSeparated.Add(s);
 								s = stack.Pop();
@@ -223,93 +242,135 @@ namespace Calculator
 			}
 		}
 
-		private string correction(string s,int n)
+		private string correction(string input)
 		{
-			int k = 0;
-			int i = 0;
-			while (k < n) 
+			int n = 0;
+			for (int i = 0; i < input.Length; i++)
 			{
-				if (s[i].Equals('('))
+				if (input[i].Equals('('))
 				{
-					s.Remove(i, 1);
-					k++;
+					n++;
+				}
+				if (input[i].Equals(')'))
+				{
+					n--;
 				}
 			}
-			return s;
-		}
-
-		private string doSmth(string s)
-		{
-			bool reallyDoingSmth = false;
-			double temp = 0;
-			for (int i = 1; i < s.Length; i++)
+			if (n >= 0)
 			{
-				if (s[i] == '/'){
-					temp = Convert.ToDouble(s.Substring(0, i)) / Convert.ToDouble(s.Substring(i + 1));
-					reallyDoingSmth = true;
-					break;
-				}
-				if (s[i] == '*') {
-					temp = Convert.ToDouble(s.Substring(0, i)) * Convert.ToDouble(s.Substring(i + 1));
-					reallyDoingSmth = true;
-					break;
-				}
-				if (s[i] == '+') 
+				for (int i = 0; i < n; i++)
 				{
-					temp = Convert.ToDouble(s.Substring(0, i)) + Convert.ToDouble(s.Substring(i + 1));
-					reallyDoingSmth = true;
-					break;
+					input = input.Insert(input.Length, ")");
 				}
-				if (s[i] == '-') {
-					temp = Convert.ToDouble(s.Substring(0, i)) - Convert.ToDouble(s.Substring(i + 1));
-					reallyDoingSmth = true;
-					break;
-				}
-			}
-			smth = false;
-			if (reallyDoingSmth)
-			{
-				return temp.ToString();
 			}
 			else
 			{
-				return s;
+				for (int i = 0; i < n; i++)
+				{
+					input = input.Insert(0, "(");
+				}
 			}
+			return input;
 		}
 
-		private double doSmthToo(string s)
+		//private string doSmth(string s)
+		//{
+		//	bool reallyDoingSmth = false;
+		//	double temp = 0;
+		//	for (int i = 1; i < s.Length; i++)
+		//	{
+		//		if (s[i] == '/'){
+		//			temp = Convert.ToDouble(s.Substring(0, i)) / Convert.ToDouble(s.Substring(i + 1));
+		//			reallyDoingSmth = true;
+		//			break;
+		//		}
+		//		if (s[i] == '*') {
+		//			temp = Convert.ToDouble(s.Substring(0, i)) * Convert.ToDouble(s.Substring(i + 1));
+		//			reallyDoingSmth = true;
+		//			break;
+		//		}
+		//		if (s[i] == '+') 
+		//		{
+		//			temp = Convert.ToDouble(s.Substring(0, i)) + Convert.ToDouble(s.Substring(i + 1));
+		//			reallyDoingSmth = true;
+		//			break;
+		//		}
+		//		if (s[i] == '-') {
+		//			temp = Convert.ToDouble(s.Substring(0, i)) - Convert.ToDouble(s.Substring(i + 1));
+		//			reallyDoingSmth = true;
+		//			break;
+		//		}
+		//	}
+		//	smth = false;
+		//	if (reallyDoingSmth)
+		//	{
+		//		return temp.ToString();
+		//	}
+		//	else
+		//	{
+		//		return s;
+		//	}
+		//}
+
+		//private double doSmthToo(string s)
+		//{
+		//	List<double> tempNum = new List<double>();
+		//	List<char> tempOper = new List<char>();
+		//	double temp = 0;
+		//	for (int i = 0; i < s.Length; i++)
+		//	{
+		//		if ((s[i].Equals('-')) || (s[i].Equals('+')) || (s[i].Equals('*')) || (s[i].Equals('/')))
+		//		{
+		//			tempNum.Add(Convert.ToDouble(s.Substring(0, i)));
+		//			tempOper.Add(s.Substring(i, 1).ToCharArray()[0]);
+		//		}
+		//	}
+		//	for (int i = 0; i < tempNum.Count; i++) 
+		//	{
+		//		if (tempOper[i].Equals('-'))
+		//		{
+		//			temp -= tempNum[i];
+		//		}
+		//		if (tempOper[i].Equals('+'))
+		//		{
+		//			temp += tempNum[i];
+		//		}
+		//		if (tempOper[i].Equals('*'))
+		//		{
+		//			temp *= tempNum[i];
+		//		}
+		//		if (tempOper[i].Equals('/'))
+		//		{
+		//			temp /= tempNum[i];
+		//		}
+		//	}
+		//	return temp;
+		//}
+
+		private string toUnarMinus(string input)
 		{
-			List<double> tempNum = new List<double>();
-			List<char> tempOper = new List<char>();
-			double temp = 0;
-			for (int i = 0; i < s.Length; i++)
+			
+			List<string> number = new List<string>(standart_number);
+			for (int i = 0; i < input.Length; i++)
 			{
-				if ((s[i].Equals('-')) || (s[i].Equals('+')) || (s[i].Equals('*')) || (s[i].Equals('/')))
+				if (input[i].Equals('-'))
 				{
-					tempNum.Add(Convert.ToDouble(s.Substring(0, i)));
-					tempOper.Add(s.Substring(i, 1).ToCharArray()[0]);
+					try
+					{
+						if (!number.Contains(input[i - 1].ToString()))
+						{
+							input = input.Remove(i, 1);
+							input = input.Insert(i, "@");
+						}
+					}
+					catch 
+					{
+						input = input.Remove(0, 1);
+						input = input.Insert(0, "@");
+					}
 				}
 			}
-			for (int i = 0; i < tempNum.Count; i++) 
-			{
-				if (tempOper[i].Equals('-'))
-				{
-					temp -= tempNum[i];
-				}
-				if (tempOper[i].Equals('+'))
-				{
-					temp += tempNum[i];
-				}
-				if (tempOper[i].Equals('*'))
-				{
-					temp *= tempNum[i];
-				}
-				if (tempOper[i].Equals('/'))
-				{
-					temp /= tempNum[i];
-				}
-			}
-			return temp;
+			return input;
 		}
 
 
@@ -502,7 +563,6 @@ namespace Calculator
 			{
 				//if (n == 0)
 				//{
-
 				//	if (smth)
 				//	{
 				//		buff = doSmth(buff).ToString();
@@ -629,7 +689,6 @@ namespace Calculator
 
 		private void button17_Click(object sender, EventArgs e)
 		{
-			n++; 
 			if (!isFull(buff))
 			{
 				if (buff.Equals("0"))
@@ -646,7 +705,7 @@ namespace Calculator
 
 		private void button18_Click(object sender, EventArgs e)
 		{
-			n--;
+		
 			if (!isFull(buff))
 			{
 				if (!buff.Equals("0"))
