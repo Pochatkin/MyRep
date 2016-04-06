@@ -232,7 +232,7 @@ namespace Calculator
 
 		private bool isFull(string s)
 		{
-			if (s.Length > 10)
+			if (s.Length > 30)
 			{
 				return true;
 			}
