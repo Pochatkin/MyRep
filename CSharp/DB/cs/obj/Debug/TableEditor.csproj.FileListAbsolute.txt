@@ -14,3 +14,4 @@ C:\Users\Михаил\GitHub\MyRep\CSharp\DB\cs\bin\Debug\MySQL.Data.dll
 C:\Users\Михаил\GitHub\MyRep\CSharp\DB\cs\obj\Debug\TableEditor.csprojResolveAssemblyReference.cache
 C:\Users\Михаил\GitHub\MyRep\CSharp\DB\cs\obj\Debug\TableEditor.Form1.resources
 C:\Users\Михаил\GitHub\MyRep\CSharp\DB\cs\obj\Debug\TableEditor.csproj.GenerateResource.Cache
+C:\Users\Михаил\GitHub\MyRep\CSharp\DB\cs\bin\Debug\TableEditor.exe.config

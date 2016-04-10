@@ -110,74 +110,74 @@ namespace TableEditor
 			// 
 			// label1
 			// 
-			this.label1.Location = new System.Drawing.Point(8, 11);
+			this.label1.Location = new System.Drawing.Point(10, 13);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(48, 16);
+			this.label1.Size = new System.Drawing.Size(57, 18);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Server:";
 			// 
 			// server
 			// 
-			this.server.Location = new System.Drawing.Point(56, 8);
+			this.server.Location = new System.Drawing.Point(67, 9);
 			this.server.Name = "server";
-			this.server.Size = new System.Drawing.Size(320, 20);
+			this.server.Size = new System.Drawing.Size(384, 22);
 			this.server.TabIndex = 1;
 			this.server.TextChanged += new System.EventHandler(this.server_TextChanged);
 			// 
 			// userid
 			// 
-			this.userid.Location = new System.Drawing.Point(56, 32);
+			this.userid.Location = new System.Drawing.Point(67, 37);
 			this.userid.Name = "userid";
-			this.userid.Size = new System.Drawing.Size(120, 20);
+			this.userid.Size = new System.Drawing.Size(144, 22);
 			this.userid.TabIndex = 3;
 			// 
 			// label2
 			// 
-			this.label2.Location = new System.Drawing.Point(8, 37);
+			this.label2.Location = new System.Drawing.Point(10, 43);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(48, 16);
+			this.label2.Size = new System.Drawing.Size(57, 18);
 			this.label2.TabIndex = 2;
 			this.label2.Text = "User Id:";
 			// 
 			// password
 			// 
-			this.password.Location = new System.Drawing.Point(260, 32);
+			this.password.Location = new System.Drawing.Point(312, 37);
 			this.password.Name = "password";
 			this.password.PasswordChar = '*';
-			this.password.Size = new System.Drawing.Size(116, 20);
+			this.password.Size = new System.Drawing.Size(139, 22);
 			this.password.TabIndex = 5;
 			// 
 			// label3
 			// 
-			this.label3.Location = new System.Drawing.Point(192, 37);
+			this.label3.Location = new System.Drawing.Point(230, 43);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(56, 16);
+			this.label3.Size = new System.Drawing.Size(68, 18);
 			this.label3.TabIndex = 4;
 			this.label3.Text = "Password:";
 			// 
 			// connectBtn
 			// 
-			this.connectBtn.Location = new System.Drawing.Point(400, 8);
+			this.connectBtn.Location = new System.Drawing.Point(480, 9);
 			this.connectBtn.Name = "connectBtn";
-			this.connectBtn.Size = new System.Drawing.Size(75, 23);
+			this.connectBtn.Size = new System.Drawing.Size(90, 27);
 			this.connectBtn.TabIndex = 6;
 			this.connectBtn.Text = "Connect";
 			this.connectBtn.Click += new System.EventHandler(this.connectBtn_Click);
 			// 
 			// label4
 			// 
-			this.label4.Location = new System.Drawing.Point(8, 109);
+			this.label4.Location = new System.Drawing.Point(10, 126);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(64, 16);
+			this.label4.Size = new System.Drawing.Size(76, 18);
 			this.label4.TabIndex = 0;
 			this.label4.Text = "Tables";
 			// 
 			// tables
 			// 
 			this.tables.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.tables.Location = new System.Drawing.Point(80, 104);
+			this.tables.Location = new System.Drawing.Point(96, 120);
 			this.tables.Name = "tables";
-			this.tables.Size = new System.Drawing.Size(296, 21);
+			this.tables.Size = new System.Drawing.Size(355, 24);
 			this.tables.TabIndex = 7;
 			this.tables.SelectedIndexChanged += new System.EventHandler(this.tables_SelectedIndexChanged);
 			// 
@@ -188,17 +188,17 @@ namespace TableEditor
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.dataGrid.DataMember = "";
 			this.dataGrid.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-			this.dataGrid.Location = new System.Drawing.Point(8, 136);
+			this.dataGrid.Location = new System.Drawing.Point(10, 157);
 			this.dataGrid.Name = "dataGrid";
-			this.dataGrid.Size = new System.Drawing.Size(544, 312);
+			this.dataGrid.Size = new System.Drawing.Size(540, 290);
 			this.dataGrid.TabIndex = 8;
 			// 
 			// updateBtn
 			// 
 			this.updateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.updateBtn.Location = new System.Drawing.Point(477, 104);
+			this.updateBtn.Location = new System.Drawing.Point(460, 120);
 			this.updateBtn.Name = "updateBtn";
-			this.updateBtn.Size = new System.Drawing.Size(75, 23);
+			this.updateBtn.Size = new System.Drawing.Size(90, 27);
 			this.updateBtn.TabIndex = 9;
 			this.updateBtn.Text = "Update";
 			this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
@@ -206,23 +206,23 @@ namespace TableEditor
 			// databaseList
 			// 
 			this.databaseList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.databaseList.Location = new System.Drawing.Point(80, 80);
+			this.databaseList.Location = new System.Drawing.Point(96, 92);
 			this.databaseList.Name = "databaseList";
-			this.databaseList.Size = new System.Drawing.Size(296, 21);
+			this.databaseList.Size = new System.Drawing.Size(355, 24);
 			this.databaseList.TabIndex = 11;
 			this.databaseList.SelectedIndexChanged += new System.EventHandler(this.databaseList_SelectedIndexChanged);
 			// 
 			// label5
 			// 
-			this.label5.Location = new System.Drawing.Point(8, 85);
+			this.label5.Location = new System.Drawing.Point(10, 98);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(64, 16);
+			this.label5.Size = new System.Drawing.Size(76, 19);
 			this.label5.TabIndex = 10;
 			this.label5.Text = "Databases";
 			// 
 			// Form1
 			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+			this.AutoScaleBaseSize = new System.Drawing.Size(6, 15);
 			this.ClientSize = new System.Drawing.Size(560, 453);
 			this.Controls.Add(this.databaseList);
 			this.Controls.Add(this.label5);
