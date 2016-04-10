@@ -99,6 +99,7 @@ namespace Calculator
 								{
 									decimal a = Convert.ToDecimal(stack.Pop());
 									decimal b = Convert.ToDecimal(stack.Pop());
+
 									summ = b / a;
 									break;
 								}
