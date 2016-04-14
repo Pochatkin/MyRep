@@ -69,7 +69,10 @@ namespace Calculator
 									summ = a + b;
 									break;
 								}
-								catch { break; }
+								catch
+								{
+									return Convert.ToDecimal("asdasd");
+									break; }
 							}
 						case "-":
 							{
@@ -80,7 +83,10 @@ namespace Calculator
 									summ = b - a;
 									break;
 								}
-								catch { break; }
+								catch
+								{
+									return Convert.ToDecimal("asdasd");
+									break; }
 							}
 						case "*":
 							{
@@ -91,7 +97,10 @@ namespace Calculator
 									summ = a * b;
 									break;
 								}
-								catch { break; }
+								catch
+								{
+									return Convert.ToDecimal("asdasd");
+									break; }
 							}
 						case "/":
 							{
@@ -103,7 +112,9 @@ namespace Calculator
 									summ = b / a;
 									break;
 								}
-								catch { break; }
+								catch {
+									return Convert.ToDecimal("asdasd");
+								 break; }
 							}
 						case "^":
 							{
@@ -114,7 +125,10 @@ namespace Calculator
 									summ = Convert.ToDecimal(Math.Pow(Convert.ToDouble(b), Convert.ToDouble(a)));
 									break;
 								}
-								catch { break; }
+								catch
+								{
+									return Convert.ToDecimal("asdasd");
+									break; }
 			
 							}
 						case "@":
@@ -140,7 +154,17 @@ namespace Calculator
 				}
 
 			}
-			return Convert.ToDecimal(stack.Pop());
+
+			if (stack.ToArray().Length > 1)
+			{
+				string s = "sasdasd";
+				decimal b = Convert.ToDecimal(s);
+				return b;
+			}
+			else
+			{
+				return Convert.ToDecimal(stack.Pop());
+			}
 		}
 
 		private byte GetPriority(string s)
@@ -644,8 +668,16 @@ namespace Calculator
 
 		private void button13_Click(object sender, EventArgs e)
 		{
-			buff = result(buff).ToString();
-			textBox3.Text = buff;
+			try
+			{
+
+				buff = result(buff).ToString();
+				textBox3.Text = buff;
+			}
+			catch {
+				buff = "Sereza chmo!";
+				textBox3.Text = buff;
+			}
 		}
 
 		private void button15_Click(object sender, EventArgs e)
@@ -712,6 +744,18 @@ namespace Calculator
 				if (!buff.Equals("0"))
 				{
 					buff += ")";
+				}
+			}
+			textBox3.Text = buff;
+		}
+
+		private void button20_Click(object sender, EventArgs e)
+		{
+			if (!isFull(buff))
+			{
+				if (!buff.Equals("0"))
+				{
+					buff += "^";
 				}
 			}
 			textBox3.Text = buff;

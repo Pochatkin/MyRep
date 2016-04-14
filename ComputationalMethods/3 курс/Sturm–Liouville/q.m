@@ -1,7 +1,7 @@
 function y = q( x )
 
 
-y  = e^(x/5);
+y  = exp(x/5);
 
 
 end

@@ -1,11 +1,12 @@
-function y = Jacobi(n,k,x)
+function y = Jacobi(n,x)
     if (n==0)
         y = 1;
     else
         if(n==1)
-            y = (k+1)*x;
+            y = x;
         else
-            y = ((n+k+2)*(2*n+2*k+3)*x*Jacobi(n-1,k,x) - (n+k+2)*(n+k+1)*Jacobi(n-2,k,x))/((n+2*k+2)*(n+2));
+            m = n -1;
+            y = ((2*m+1)/(m+1) * x * Jacobi(n-1,x) - m/(m+1) * Jacobi(n-2,x));
         end;
     end;
 end
