@@ -18,12 +18,12 @@
         <form>
           <div class="input-container">
             <input type="text" id="loginSignIn" required="required">
-            <label for="login">Login</label>
+            <label for="loginSignIn">Login</label>
             <div class="bar"></div>
           </div>
           <div class="input-container">
             <input type="password" id="passwordSignIn" required="required">
-            <label for="password">Password</label>
+            <label for="passwordSignIn">Password</label>
             <div class="bar"></div>
           </div>
           <div class="button-container">
@@ -42,17 +42,17 @@
           <form>
             <div class="input-container">
               <input type="text" id="loginSignUp" required="required"/>
-              <label for="login">Login</label>
+              <label for="loginSignUp">Login</label>
               <div class="bar"></div>
             </div>
             <div class="input-container">
               <input type="password" id="passwordSignUp" required="required"/>
-              <label for="password">Password</label>
+              <label for="passwordSignUp">Password</label>
               <div class="bar"></div>
             </div>
             <div class="input-container">
               <input type="password" id="repeatPasswordSignUp" required="required"/>
-              <label for="repeat_password">Repeat Password</label>
+              <label for="repeatPasswordSignUp">Repeat Password</label>
               <div class="bar"></div>
             </div>
             <div class="button-container">

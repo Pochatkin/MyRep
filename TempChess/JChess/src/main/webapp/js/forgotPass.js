@@ -22,7 +22,7 @@ $(document).ready(function(){
 })
 
 function isEmail(email){
-    for(i = 0, i < email.length, i++){
+    for(i = 0, i < email.length, i++ ){
         //blablabla
     }
 }

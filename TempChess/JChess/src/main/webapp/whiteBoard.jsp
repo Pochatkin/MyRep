@@ -18,8 +18,8 @@
     			    <canvas id="chess" width="800" height="800" border="0"></canvas>
     		    </div>
     		    <div class="col-md-3">
-                    <table class="table table-striped">
-                    <thead ><tr><th>White</th><th>Black</th></tr></thead>
+                    <table id="Table" class="table table-striped">
+                    <thead><tr><th>White</th><th>Black</th></tr></thead>
                     <tbody>
                       <tr><td>F6</td><td>A4</td></tr>
                       <tr><td>..</td><td>..</td></tr>

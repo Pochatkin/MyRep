@@ -10,7 +10,6 @@ var BLOCK_COLOUR_1 = '#f0d9b5',
 
 var canvasCoef = 1;
 var piecePositions = null;
-var req = new XMLHttpRequest();
 var answer;  // TODO: replace to JSON
 
 var PIECE_PAWN = 0,
@@ -24,7 +23,6 @@ var PIECE_PAWN = 0,
 	pieces = null,
 	ctx = null,
 	json = null,
-	jsonToServer = null,
 	canvas = null,
 	BLACK_TEAM = 0,
 	WHITE_TEAM = 1,
@@ -88,13 +86,7 @@ function blockOccupiedByEnemy(clickedBlock) {
 
 
 function blockOccupied(clickedBlock) {
-	//var pieceAtBlock = getPieceAtBlockForTeam(json.black, clickedBlock);
-
-	//if (pieceAtBlock === null) {
-		pieceAtBlock = getPieceAtBlockForTeam(json.white, clickedBlock);
-	//}
-
-	return (pieceAtBlock !== null);
+	return (getPieceAtBlockForTeam(json.white, clickedBlock) !== null);
 }
 
 
@@ -477,13 +469,21 @@ function processMove(clickedBlock) {
 		checkIfPieceClicked(clickedBlock);
 	} else if (canSelectedMoveToBlock(selectedPiece, clickedBlock, enemyPiece) === true) {
 		movePiece(clickedBlock, enemyPiece);
+		alert('add' + convertToStdCoordinate(selectedPiece.col,selectedPiece.row) + ' ' + convertToStdCoordinate(clickedBlock.col,clickedBlock.row));
+		addToTable(convertToStdCoordinate(selectedPiece.col,selectedPiece.row),
+			convertToStdCoordinate(clickedBlock.col,clickedBlock.row));
 	}
 	//WaitingEnemyMove();
+
 }
 
 function WaitingEnemyMove(){
     alert('rara');
-	$.post('main',{action: 'Wai'})
+	//TODO: Block board
+	$.post('main',{action: 'Waiting'},function(data){
+		//TODO: Unlock board and move
+		selectedPiece = data.from;
+	});
 }
 
 function board_click(ev) {
@@ -496,6 +496,30 @@ function board_click(ev) {
 	} else {
 		processMove(clickedBlock);
 	}
+
+}
+
+function addToTable(selectedBlock, moveBlock, currentColor) {
+	if(currentColor === 'white'){
+		var table = document.getElementById("table");
+		var row = table.insertRow(table.length);
+		var cell = row.insertCell(0);
+		cell.innerHTML = selectedBlock + ' - ' + moveBlock;
+	} else
+		if(currentColor === 'black'){
+			var table = document.getElementById("table");
+			var row = table.insertRow(table.length);
+			var cell = row.insertCell(1);
+			cell.innerHTML = selectedBlock + ' - ' + moveBlock;
+		} else {
+			var table = document.getElementById("table");
+			var row = table.insertRow(table.length);
+			var cell1 = row.insertCell(1);
+			var cell2 = row.insertCell(0);
+			cell1.innerHTML = 'Error';
+			cell2.innerHTML = 'Error';
+		}
+
 
 }
 
