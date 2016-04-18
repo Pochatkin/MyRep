@@ -30,6 +30,17 @@ var PIECE_PAWN = 0,
 	currentTurn = WHITE_TEAM,
 	selectedPiece = null;
 
+function convertToBadCoordinate(coordinateFrom, coordinateTo){
+    /*if(coordinateFrom[0] === 'H') {selectedPiece.col = 7; selectedPiece.row = 8 - coordinateFrom[1]; selectedPiece.status = 0; selectedPiece.position = ???? }
+    if(coordinateFrom[0] === 'G') return
+    if(coordinateFrom[0] === 'F') return
+    if(coordinateFrom[0] === 'E') return
+    if(coordinateFrom[0] === 'D') return
+    if(coordinateFrom[0] === 'C') return
+    if(coordinateFrom[0] === 'B') return
+    if(coordinateFrom[0] === 'A') return*/
+}
+
 
 function convertToStdCoordinate(col,row){
 	if(col === 7) return 'H' + (8 - row);
@@ -100,7 +111,7 @@ function canSelectedMoveToBlock(selectedPiece, clickedBlock, enemyPiece) {
 		to: convertToStdCoordinate(clickedBlock.col, clickedBlock.row)
     }
     var str = JSON.stringify(jsonToServer)
-    alert(str);
+    alert(JSON.stringify(selectedPiece) + ' ' + JSON.stringify(clickedBlock));
     //sendToServer(jsonToServer);
     answer = {
         response: 'OK'                // TODO: Replace answer. This is cap
@@ -439,10 +450,11 @@ function movePiece(clickedBlock, enemyPiece) {
 
 	drawBlock(selectedPiece.col, selectedPiece.row);
 
-	var //team = (currentTurn === WHITE_TEAM ? json.white : json.black),
-		team = json.white;
-		//opposite = (currentTurn !== WHITE_TEAM ? json.white : json.black);
-        opposite = json.black;
+/*	var team = json.white,
+		opposite = json.black;*/
+
+    var team = json.black,
+        opposite = json.white;
 
 	team[selectedPiece.position].col = clickedBlock.col;
 	team[selectedPiece.position].row = clickedBlock.row;
@@ -483,6 +495,7 @@ function WaitingEnemyMove(){
 	$.post('main',{action: 'Waiting'},function(data){
 		//TODO: Unlock board and move
 		selectedPiece = data.from;
+		processMove(data.to)
 	});
 }
 
@@ -494,6 +507,11 @@ function board_click(ev) {
 	if (selectedPiece === null) {
 		checkIfPieceClicked(clickedBlock);
 	} else {
+        selectedPiece.piece = 2;
+        selectedPiece.row = 0;
+        selectedPiece.col = 6;
+        selectedPiece.position = 62;
+        selectedPiece.status = 0;
 		processMove(clickedBlock);
 	}
 
