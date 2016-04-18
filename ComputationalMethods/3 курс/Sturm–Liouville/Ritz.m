@@ -45,7 +45,7 @@ disp('Невязка');
 
 t(x) = z1;
 h(x) = diff(t(x),x);
-g(x) = (-1)*diff(p(x)*h(x),x)+q(x)*t(x)-y(p)*t(x);
+g = (-1)*diff(p(x)*h(x),x)+q(x)*t(x)-y(p)*t(x);
 disp(vpa(sqrt(int(g^2,-1,1))));
 disp(' ');
 

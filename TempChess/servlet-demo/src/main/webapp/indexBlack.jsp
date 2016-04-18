@@ -1,9 +1,8 @@
 <html>
     <head>
         <title>Game page</title>
-        <link rel="stylesheet" href="css/style.css">
         <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script type="text/javascript" src="/servlet-demo/js/chess_board_whitePlayer.js"></script>
+        <script type="text/javascript" src="/servlet-demo/js/chess_board_blackPlayer.js"></script>
 
 
 
