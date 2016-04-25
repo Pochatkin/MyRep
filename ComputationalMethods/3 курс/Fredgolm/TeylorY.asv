@@ -1,12 +1,13 @@
-function z = TeylorY( n,y )
+function z = TeylorY( n )
 
+syms y;
 
 factorial = 1; 
 
 for j = 1:1:n+1
     
     if(j == 1)
-        temp(j) = 1*y^0;
+        temp(j) = 1;
     else
     factorial = factorial*(j-1);
     temp(j) = ((y)^(j-1))/(factorial);
@@ -15,7 +16,7 @@ for j = 1:1:n+1
 end
 
 z = temp;
-
+disp(z);
 
 end
 
