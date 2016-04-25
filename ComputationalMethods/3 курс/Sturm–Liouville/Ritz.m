@@ -2,9 +2,9 @@ function y = Ritz( n )
 
 syms x;
 
-for p = 1:1:n
+for j = 1:1:n
     for r = 1:1:n
-        f(p,r) = Energ_scalar(p,r);
+        f(j,r) = Energ_scalar(j,r);
     end
 end
 
@@ -14,21 +14,13 @@ disp(f);
 
 temp = 0;
 
-
-for r = 1:1:n
-    temp = temp + vpa(R(r,1) * W(r,x));
+for j = 1:1:n
+    for r = 1:1:n
+        temp = temp + vpa(R(r,1) * W(r,x));
+    end
+    z(j) = temp;
 end
-z1 = temp;
 
-for r = 1:1:n
-    temp = temp + vpa(R(r,2) * W(r,x));
-end
-z2 = temp;
-
-for r = 1:1:n
-    temp = temp + vpa(R(r,3) * W(r,x));
-end
-z3 = temp;
 
 disp('Собственные числа:');
 y = eig(f);
@@ -37,17 +29,21 @@ disp(y);
 disp(' ');
 disp('Собственные функции');
 
-    disp(vpa(z1));
-    disp(vpa(z2));
-    disp(vpa(z3));
+for j = 1:1:n
+   disp(z(j));
+end
+
 disp('');
 disp('Невязка');
 
-t(x) = z1;
-h(x) = diff(t(x),x);
-g = (-1)*diff(p(x)*h(x),x)+q(x)*t(x)-y(p)*t(x);
-disp(vpa(sqrt(int(g^2,-1,1))));
-disp(' ');
+for r = 1:1:n
+    temp = z(r);
+    g = (-1)*diff(p(x)*diff(temp,x),x)+q(x)*temp-y(r)*temp;
+    disp(vpa(g));
+    disp(' ');
+    disp(vpa(sqrt(int(g^2,-1,1))) / 1000);
+    disp(' ');
+end
 
 end
 
