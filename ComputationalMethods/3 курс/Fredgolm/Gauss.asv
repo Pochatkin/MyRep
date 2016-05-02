@@ -1,4 +1,4 @@
-function [y,z] =  Gauss( n )
+function y =  Gauss( n )
 
 syms x;
 
@@ -27,18 +27,13 @@ disp(vpa(temp));
 
 
 roots = solve(temp);
-roots = real(roots);
-
 
 for j=1:1:n
-    coef(j) = int(temp /((x-roots(j)) * subs(diff(temp),x,roots(j))),0,1);
+    coef(j) = int(temp /(roots(j) * diff(temp)),0,1);
 end
 
-y = roots;
-z = coef;
-
 disp(vpa(y));
-disp(vpa(z));
+
 
 end
 

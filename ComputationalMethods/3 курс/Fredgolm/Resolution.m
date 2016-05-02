@@ -12,7 +12,7 @@ for j=1:1:n
     for k=1:1:n
         eta(j,k) = int(tempY(j) * tempX(k),0,1);
         if(j == n)
-            b(k) = int(tempY(j) * f(y),0,1);
+            b(k) = int(tempY(k) * f(y),0,1);
         end
         if(j == k)
             A(j,k) = 1 - eta(j,k);
@@ -27,7 +27,7 @@ D = inv(A);
 for j=1:1:n
     for k=1:1:n
         if(k==1)
-            c(j) = D(j,k);
+            c(j) = D(j,k)*b(k);
         else
             c(j) = c(j) + D(j,k)*b(k);
         end
@@ -41,7 +41,11 @@ for k=1:1:n
     temp = temp + c(k)*tempX(k);
 end
 G=temp;
-disp(vpa(G));
+disp(vpa(subs(G,x,0)));
+
+disp(vpa(subs(G,x,0.5)));
+
+disp(vpa(subs(G,x,1)));
 
 end
 
