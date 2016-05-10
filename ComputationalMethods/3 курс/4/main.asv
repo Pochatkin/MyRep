@@ -10,7 +10,7 @@ function y = main(N,M)
 h = 1/N;
 tau = 1/M;
 
-
+psi = 1;
 
 
 for i=1:1:N+1
