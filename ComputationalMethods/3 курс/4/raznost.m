@@ -14,8 +14,8 @@ end
 h1=0;
 h2=0;
 
-for i=1:k
-    for j=1:k
+for i=1:N+1
+    for j=1:M+1
         temp_arr(i,j) = big(i+(k-1)*h1,j+(k-1)*h2);
         h2 = h2 + 1;
     end

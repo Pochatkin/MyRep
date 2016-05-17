@@ -19,18 +19,18 @@ for i=1:1:N+1
 end
 
 for i=1:1:N+1
-    u_arr(i,1) = x(i)^2; 
-    u_arr(i,2) = tau + u_arr(i,1);
+    u_arr(i,1) = Phi1(x(i)); 
+    u_arr(i,2) = tau*Psi1(x(i)) + u_arr(i,1);
 end
 
 for i=2:N
     for k=2:M
-        u_arr(i,k+1) = ((2*u_arr(i,k)-u_arr(i,k-1)) + tau^2 * (cos(x(i))*(u_arr(i+1,k)-2*u_arr(i,k) + u_arr(i-1,k))/h^2 - 2*cos(x(i))));
+        u_arr(i,k+1) = 2*u_arr(i,k) - u_arr(i,k-1) + tau^2 *(cos(x(i)) * (u_arr(i+1,k) - 2*u_arr(i,k) + u(i-1,k))/h^2 - 2 * cos(x(i)));
     end
 end
 
 for k = 1:1:M+1
-    u_arr(N+1,k) = 1 + t(k);
+    u_arr(N+1,k) = beta1(t(k));
 end
 
 for k = 1:1:M+1

@@ -10,7 +10,7 @@ end
 
 for i=1:N+1
     for j=1:N+1
-        arr(i,j) = x(i)^2+t(j);
+        arr(i,j) = solution(x(i),t(j));
     end
 end
 
