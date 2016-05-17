@@ -1,7 +1,7 @@
-function [A ] = Lattice( f,fi,psi,a,b,N,M )
+function [A ] = Lattice( f,fi,psi,alpha,b,N,M )
 syms x;
 syms t;
-p = x + 2;
+a = cos(x);
 T = 1;
 A = zeros(6, 6);
 xi = zeros(1, N + 1);
@@ -28,20 +28,17 @@ for i = 1 : N + 1
     w(1,i) = subs(fi,x,xi(i));
     w(2,i) = tau * subs(psi,x,xi(i)) + w(1,i);
 end
-for k = 3 : M + 1
-    w(k,1) = subs(a,t,ti(k));
-end
+
 for k = 2 : M
     for i = 2 : N
-        Ln = subs(p,x,xi(i)+h*1/2) / h^2 * (w(k,i+1) - w(k,i)) - subs(p,x,xi(i)-h*1/2) / h^2 * (w(k,i) - w(k,i-1));
+        Ln = (subs(a,x,xi(i)) / h^2) * (w(k,i+1) - 2 * w(k,i) + w(k,i-1));
         w(k+1,i) = (Ln + zf(k,i)) * tau^2 + 2 * w(k,i) - w(k-1,i);
     end
-    %b1 = 1, b2 = 1
-    w(k+1,N+1) = (2 * h * subs(b, t, ti(k+1)) + 4 * w(k+1,N) - w(k+1,N-1)) / (2 * h + 3);
+    %b1 = 1, b2 = 0
+    w(k+1,N+1) = subs(b,t,ti(k+1));
+    w(k+1,1) =  (subs(alpha,t,ti(k+1)) * h * 2 - 4*w(k+1,2) + w(k+1,3))/(-3);
 end
 
-
-%V eto ya veryu
 n = 1;
 m = 1;
 for i = 1 : N + 1

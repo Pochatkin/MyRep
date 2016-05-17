@@ -13,8 +13,5 @@ y(n) = t(n);
 for i = n : (-1) : 2
     y(i - 1) = s(i - 1) * y(i) + t(i - 1);
 end
-for i = 1 : n - 1
-    z(i) = y(i) / 2 + y(i + 1) / 2;
-end
 end
 

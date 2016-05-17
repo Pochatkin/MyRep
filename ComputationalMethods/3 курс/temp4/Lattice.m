@@ -31,14 +31,12 @@ end
 
 for k = 2 : M
     for i = 2 : N
-        Ln = subs(a,x,xi(i)) / h^2 * (w(k,i+1) - 2 * w(k,i) + w(k,i-1));
+        Ln = (subs(a,x,xi(i)) / h^2) * (w(k,i+1) - 2 * w(k,i) + w(k,i-1));
         w(k+1,i) = (Ln + zf(k,i)) * tau^2 + 2 * w(k,i) - w(k-1,i);
     end
     %b1 = 1, b2 = 0
-    w(k+1,N+1) = subs(b,t,ti(k+1)); %(2 * h * subs(b, t, ti(k+1)) + 4 * w(k+1,N) - w(k+1,N-1)) / (2 * h + 3);
-end
-for k = 3 : M + 1
-    w(k,1) =  (- subs(alpha,t,ti(k)) * h * 2 + 4*w(k,2) - w(k,3))/3;
+    w(k+1,N+1) = subs(b,t,ti(k+1));
+    w(k+1,1) =  (subs(alpha,t,ti(k+1)) * h * 2 - 4*w(k+1,2) + w(k+1,3))/(-3);
 end
 
 n = 1;

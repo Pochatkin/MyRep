@@ -2,7 +2,7 @@ function Solver( N,M )
 syms x;
 syms t;
 Uz = zeros(6,6);
-u = t + x^2;
+u = t^3+x^3;
 [f,fi,psi,a,b] = First(u);
 disp('Функция u - точное решение');
 disp(u);
@@ -35,22 +35,18 @@ disp(Uz);
 Ni = [5, 10, 20];
 Mi = [10, 20, 40];
 for s = 1 : 3
-    h = 1 / Ni(s);
-    disp('h =');
-    disp(h);
-    tau = 1 / Mi(s);
-    disp('t =');
-    disp(tau);
     [A] = Lattice(f,fi,psi,a,b,Ni(s),Mi(s));
+    disp('Узлов');
+    if(s == 3)
+        disp('20');
+    else
+        disp(s*5);
+    end
     disp('Норма разности точного решения и приближенного по узлам крупной сетки');
     max1 = Norma(A, Uz);
     disp(max1);
-    if s ~= 1
-        disp('Норма разности приближенных решений этого и предыдущего');
-        max2 = Norma(A, B);
-        disp(max2);
-    end
-    B = A;
+    disp('----------------------------------');
+   
 end
 
 end
