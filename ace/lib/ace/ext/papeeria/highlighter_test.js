@@ -49,7 +49,7 @@ define(function(require, exports, module) {
         },
 
         "test: has no opening bracket, cursor after closing bracket": function() {
-            var session = new EditSession(["someText}_"]);
+            var session = new EditSession(["someText}text_"]);
             var editor = new Editor(new MockRenderer(), session);
             session.setMode("./mode/papeeria_latex");
 
