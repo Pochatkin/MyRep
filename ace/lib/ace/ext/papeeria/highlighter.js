@@ -36,10 +36,17 @@
       session.$highlightRange = pos;
     };
     findSurroundingBrackets = function(editor) {
-      var allBrackets, expectedRightBracket, key, leftCandidate, leftNearest, openingBrackets, positionLeftwards, positionRightwards, result, rightBracket, rightCandidate, rightNearest, session;
+      var allBrackets, closingBrackets, expectedRightBracket, key, leftCandidate, leftNearest, openingBrackets, positionLeftwards, positionRightwards, result, rightBracket, rightCandidate, rightNearest, session;
       session = editor.getSession();
+      closingBrackets = {
+        "(": ")",
+        "[": "]",
+        "{": "}"
+      };
       positionLeftwards = editor.getCursorPosition();
-      positionLeftwards.column += 1;
+      if (session.getLine(positionLeftwards.row).charAt(positionLeftwards.column - 1) in closingBrackets) {
+        positionLeftwards.column += 1;
+      }
       openingBrackets = {
         ")": "(",
         "]": "[",
