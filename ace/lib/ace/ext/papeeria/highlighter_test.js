@@ -151,7 +151,7 @@ define(function(require, exports, module) {
         },
 
         "test: mismatch, multiline, has no closing bracket, cursor after opening bracket": function() {
-            var session = new EditSession(["{someText" + "\n" + "moreSomeText"]);
+            var session = new EditSession(["{someText", "moreSomeText"]);
             var editor = new Editor(new MockRenderer(), session);
             session.setMode("./mode/papeeria_latex");
 

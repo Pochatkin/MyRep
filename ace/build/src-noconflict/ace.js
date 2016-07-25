@@ -8488,6 +8488,7 @@ function BracketMatch() {
         
             while (valueIndex >= 0) {
                 var chr = value.charAt(valueIndex);
+                console.log(chr);
                 if (chr == openBracket) {
                     depth -= 1;
                     if (depth == 0) {

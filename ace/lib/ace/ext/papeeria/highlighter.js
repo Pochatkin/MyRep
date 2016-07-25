@@ -6,6 +6,7 @@
     highlightBrackets = function(editor) {
       var pos, range, rangeLeft, rangeRight, session;
       pos = findSurroundingBrackets(editor);
+      console.log(pos);
       session = editor.getSession();
       if (session.$bracketHighlightRight || session.$bracketHighlightLeft) {
         session.removeMarker(session.$bracketHighlightLeft);
@@ -36,11 +37,19 @@
       session.$highlightRange = pos;
     };
     findSurroundingBrackets = function(editor) {
-      var allBrackets, closingBrackets, expectedRightBracket, key, leftCandidate, leftNearest, line, positionLeftwards, positionRightwards, result, rightBracket, rightCandidate, rightNearest, session;
-      positionRightwards = editor.getCursorPosition();
+      var allBrackets, expectedRightBracket, key, leftCandidate, leftNearest, openingBrackets, positionLeftwards, positionRightwards, result, rightBracket, rightCandidate, rightNearest, session;
+      session = editor.getSession();
       positionLeftwards = editor.getCursorPosition();
       positionLeftwards.column += 1;
-      session = editor.getSession();
+      openingBrackets = {
+        ")": "(",
+        "]": "[",
+        "}": "{"
+      };
+      positionRightwards = editor.getCursorPosition();
+      if (session.getLine(positionRightwards.row).charAt(positionRightwards.column - 1) in openingBrackets) {
+        positionRightwards.column -= 1;
+      }
       allBrackets = {
         left: [session.$findOpeningBracket('}', positionLeftwards, /(\.?.paren)+/), session.$findOpeningBracket(']', positionLeftwards, /(\.?.paren)+/), session.$findOpeningBracket(')', positionLeftwards, /(\.?.paren)+/)],
         right: [session.$findClosingBracket('{', positionRightwards, /(\.?.paren)+/), session.$findClosingBracket('[', positionRightwards, /(\.?.paren)+/), session.$findClosingBracket('(', positionRightwards, /(\.?.paren)+/)]
@@ -80,24 +89,6 @@
           }
         }
         key++;
-      }
-      if (session.getLine(positionRightwards.row + 1) === '') {
-        line = session.getLine(positionRightwards.row);
-        closingBrackets = {
-          "(": ")",
-          "[": "]",
-          "}": "{"
-        };
-        if (rightNearest === null) {
-          if (line.charAt(positionRightwards.column) === '') {
-            if (line.charAt(positionRightwards.column - 1) in closingBrackets) {
-              rightNearest = {
-                row: positionRightwards.row,
-                column: positionRightwards.column - 1
-              };
-            }
-          }
-        }
       }
       result = {
         left: leftNearest,
