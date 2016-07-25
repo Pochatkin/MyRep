@@ -108,13 +108,11 @@ function BracketMatch() {
 
         var iterator = new TokenIterator(this, position.row, position.column);
         var token = iterator.getCurrentToken();
-        console.log(token);
         if (!token)
             token = iterator.stepForward();
         if (!token)
             return;
 
-        console.log(token);
         
          if (!typeRe){
             typeRe = new RegExp(
@@ -133,7 +131,6 @@ function BracketMatch() {
         
             while (valueIndex >= 0) {
                 var chr = value.charAt(valueIndex);
-                console.log(chr);
                 if (chr == openBracket) {
                     depth -= 1;
                     if (depth == 0) {

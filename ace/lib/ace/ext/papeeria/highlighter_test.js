@@ -48,7 +48,7 @@ define(function(require, exports, module) {
             assert.range(getMismatchRangeHighlightingText(session), 0, 0, 0, 10);
         },
 
-        "test: has no opening bracket, cursor after closing bracket": function() {
+        "test: has no opening bracket, cursor next position after closing bracket": function() {
             var session = new EditSession(["someText}_"]);
             var editor = new Editor(new MockRenderer(), session);
             session.setMode("./mode/papeeria_latex");
@@ -57,8 +57,20 @@ define(function(require, exports, module) {
 
             highlighter.highlightBrackets(editor);
 
-            assert.equal(getMismatchRangeHighlightingText(session), null);
+            assert.range(getMismatchRangeHighlightingText(session), 0, 0, 0 ,9);
         },
+
+        "test: has no opening bracket, cursor after closing bracket": function() {
+            var session = new EditSession(["someText}text_"]);
+            var editor = new Editor(new MockRenderer(), session);
+            session.setMode("./mode/papeeria_latex");
+
+            editor.moveCursorTo(0,13);
+
+            highlighter.highlightBrackets(editor);
+
+            assert.equal(getMismatchRangeHighlightingText(session), null);
+        }
 
         "test: has no closing bracket, cursor after opening bracket": function() {
             var session = new EditSession(["{some_Text"]);

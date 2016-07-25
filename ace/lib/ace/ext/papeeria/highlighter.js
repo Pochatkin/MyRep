@@ -6,7 +6,6 @@
     highlightBrackets = function(editor) {
       var pos, range, rangeLeft, rangeRight, session;
       pos = findSurroundingBrackets(editor);
-      console.log(pos);
       session = editor.getSession();
       if (session.$bracketHighlightRight || session.$bracketHighlightLeft) {
         session.removeMarker(session.$bracketHighlightLeft);
@@ -37,10 +36,17 @@
       session.$highlightRange = pos;
     };
     findSurroundingBrackets = function(editor) {
-      var allBrackets, expectedRightBracket, key, leftCandidate, leftNearest, openingBrackets, positionLeftwards, positionRightwards, result, rightBracket, rightCandidate, rightNearest, session;
+      var allBrackets, closingBrackets, expectedRightBracket, key, leftCandidate, leftNearest, openingBrackets, positionLeftwards, positionRightwards, result, rightBracket, rightCandidate, rightNearest, session;
       session = editor.getSession();
+      closingBrackets = {
+        "(": ")",
+        "[": "]",
+        "{": "}"
+      };
       positionLeftwards = editor.getCursorPosition();
-      positionLeftwards.column += 1;
+      if (session.getLine(positionLeftwards.row).charAt(positionLeftwards.column - 1) in closingBrackets) {
+        positionLeftwards.column += 1;
+      }
       openingBrackets = {
         ")": "(",
         "]": "[",
