@@ -6,7 +6,6 @@
     highlightBrackets = function(editor) {
       var pos, range, rangeLeft, rangeRight, session;
       pos = findSurroundingBrackets(editor);
-      console.log(pos);
       session = editor.getSession();
       if (session.$bracketHighlightRight || session.$bracketHighlightLeft) {
         session.removeMarker(session.$bracketHighlightLeft);

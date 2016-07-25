@@ -4,7 +4,6 @@ define((require, exports, module) ->
 
     highlightBrackets = (editor) ->
         pos = findSurroundingBrackets(editor)
-        console.log(pos);
         session = editor.getSession()
         if session.$bracketHighlightRight || session.$bracketHighlightLeft
             session.removeMarker(session.$bracketHighlightLeft)
