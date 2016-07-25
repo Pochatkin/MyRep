@@ -89,11 +89,13 @@
           "}": "{"
         };
         if (rightNearest === null) {
-          if (line.charAt(positionRightwards.column - 1) in closingBrackets) {
-            rightNearest = {
-              row: positionRightwards.row,
-              column: positionRightwards.column - 1
-            };
+          if (line.charAt(positionRightwards.column) === '') {
+            if (line.charAt(positionRightwards.column - 1) in closingBrackets) {
+              rightNearest = {
+                row: positionRightwards.row,
+                column: positionRightwards.column - 1
+              };
+            }
           }
         }
       }
