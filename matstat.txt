@@ -1,12 +1,12 @@
-Char 8
+Chap 8
 15
 53
-Char 9
+Chap 9
 22
 68
 49
-Char 10
+Chap 10
 13
 40
-Char 11
+Chap 11
 20
