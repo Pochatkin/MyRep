@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/Triangle.cpp.o CMakeFiles/untitled.dir/Vector3d.cpp.o  -o untitled 
